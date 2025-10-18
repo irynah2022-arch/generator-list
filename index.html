@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Генератор рабочего листа | Ирина Гаевская</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f7f0;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    h1 {
+      color: #2a5c82;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    h2 {
+      color: #2a5c82;
+      margin: 20px 0 12px;
+      font-size: 20px;
+    }
+    textarea, select, input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #fff;
+    }
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #2a5c82;
+    }
+    .checkbox-group, .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f8ff;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+    .checkbox-item input {
+      margin: 0;
+    }
+    .btn {
+      background-color: #ff9e44;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #e68a33;
+    }
+    .btn-secondary {
+      background-color: #6ac078;
+    }
+    .btn-secondary:hover {
+      background-color: #57a965;
+    }
+    #promptOutput {
+      width: 100%;
+      min-height: 150px;
+      padding: 16px;
+      background: #f0f8ff;
+      border: 2px dashed #2a5c82;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      margin-top: 20px;
+      font-family: monospace;
+      font-size: 15px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #777;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Генератор рабочего листа для учеников</h1>
+    <p style="text-align:center; color:#666; margin-bottom:20px;">
+      Вставьте фрагмент плана-конспекта — получите промпт для нейросети!
+    </p>
+
+    <label for="lessonPlan">📝 Вставьте текст плана-конспекта урока:</label>
+    <textarea id="lessonPlan" placeholder="Например: Тема урока — «Периметр прямоугольника». Учащиеся узнают, что такое периметр, научатся находить его по формуле..."></textarea>
+
+    <label for="grade">📚 Выберите класс:</label>
+    <select id="grade">
+      <option value="1">1 класс</option>
+      <option value="2">2 класс</option>
+      <option value="3">3 класс</option>
+      <option value="4">4 класс</option>
+      <option value="5">5 класс</option>
+      <option value="6">6 класс</option>
+      <option value="7">7 класс</option>
+      <option value="8">8 класс</option>
+      <option value="9">9 класс</option>
+      <option value="10">10 класс</option>
+      <option value="11">11 класс</option>
+    </select>
+
+    <h2>🎯 Цель рабочего листа (можно выбрать несколько):</h2>
+    <div class="checkbox-group" id="goals">
+      <label class="checkbox-item"><input type="checkbox" value="Проверка понимания нового материала"> Проверка понимания</label>
+      <label class="checkbox-item"><input type="checkbox" value="Закрепление пройденного"> Закрепление</label>
+      <label class="checkbox-item"><input type="checkbox" value="Подготовка к контрольной работе"> Подготовка к контрольной</label>
+      <label class="checkbox-item"><input type="checkbox" value="Развитие читательской грамотности"> Читательская грамотность</label>
+      <label class="checkbox-item"><input type="checkbox" value="Развитие математической грамотности"> Математическая грамотность</label>
+      <label class="checkbox-item"><input type="checkbox" value="Развитие естественнонаучной грамотности"> Естественнонаучная грамотность</label>
+      <label class="checkbox-item"><input type="checkbox" value="Развитие финансовой грамотности"> Финансовая грамотность</label>
+      <label class="checkbox-item"><input type="checkbox" value="Творческое применение знаний"> Творческое задание</label>
+    </div>
+
+    <h2>🧩 Типы заданий (выберите нужные):</h2>
+    <div class="checkbox-group" id="taskTypes">
+      <label class="checkbox-item"><input type="checkbox" value="Множественный выбор"> Множественный выбор</label>
+      <label class="checkbox-item"><input type="checkbox" value="Краткий ответ"> Краткий ответ</label>
+      <label class="checkbox-item"><input type="checkbox" value="Сопоставление"> Сопоставление</label>
+      <label class="checkbox-item"><input type="checkbox" value="Заполнение пропусков"> Заполнение пропусков</label>
+      <label class="checkbox-item"><input type="checkbox" value="Верно/неверно"> Верно/неверно</label>
+      <label class="checkbox-item"><input type="checkbox" value="Мини-кейс с вопросами"> Мини-кейс</label>
+      <label class="checkbox-item"><input type="checkbox" value="Рисование / схема / модель"> Рисунок или схема</label>
+      <label class="checkbox-item"><input type="checkbox" value="Творческое задание"> Творческое задание</label>
+    </div>
+
+    <h2>✨ Особые пожелания:</h2>
+    <div class="checkbox-group" id="extras">
+      <label class="checkbox-item"><input type="checkbox" value="Игровая форма"> Игровая форма</label>
+      <label class="checkbox-item"><input type="checkbox" value="Инклюзивный подход"> Инклюзивный подход</label>
+      <label class="checkbox-item"><input type="checkbox" value="Связь с жизнью / краеведение"> Связь с жизнью</label>
+      <label class="checkbox-item"><input type="checkbox" value="Минимум текста"> Минимум текста</label>
+      <label class="checkbox-item"><input type="checkbox" value="Включить самопроверку или ключи"> Самопроверка</label>
+      <label class="checkbox-item"><input type="checkbox" value="Адаптация под печать на одном листе A4"> На 1 листе A4</label>
+    </div>
+
+    <h2>🔤 Язык рабочего листа для учеников:</h2>
+    <select id="worksheetLanguage">
+      <option value="русский">Русский</option>
+      <option value="беларуская мова">Беларуская мова</option>
+    </select>
+
+    <h2>📤 Формат результата:</h2>
+    <div class="radio-group">
+      <label class="checkbox-item">
+        <input type="radio" name="outputType" value="content" checked> Только текст заданий
+      </label>
+      <label class="checkbox-item">
+        <input type="radio" name="outputType" value="html"> Готовая HTML-страница для печати
+      </label>
+    </div>
+
+    <button class="btn" onclick="generatePrompt()">Сгенерировать промпт</button>
+
+    <div id="outputSection" style="display:none;">
+      <h2>📄 Ваш промпт:</h2>
+      <div id="promptOutput"></div>
+      <br>
+      <button class="btn" onclick="copyPrompt()">Копировать</button>
+      <button class="btn btn-secondary" onclick="openInQwen()">Открыть в Qwen</button>
+    </div>
+
+    <footer>
+      © Ирина Гаевская, учитель начальных классов, Беларусь
+    </footer>
+  </div>
+
+  <script>
+    function getCheckedValues(containerId) {
+      const checkboxes = document.querySelectorAll(`#${containerId} input:checked`);
+      return Array.from(checkboxes).map(cb => cb.value);
+    }
+
+    function generatePrompt() {
+      const lessonPlan = document.getElementById('lessonPlan').value.trim();
+      const grade = document.getElementById('grade').value;
+      const goals = getCheckedValues('goals');
+      const taskTypes = getCheckedValues('taskTypes');
+      const extras = getCheckedValues('extras');
+      const worksheetLang = document.getElementById('worksheetLanguage').value;
+      const outputType = document.querySelector('input[name="outputType"]:checked').value;
+
+      if (!lessonPlan) {
+        alert('Пожалуйста, вставьте текст плана-конспекта урока.');
+        return;
+      }
+
+      let prompt = '';
+
+      if (outputType === 'html') {
+        // Стиль по классу: 1–4 → игровой
+        let styleDescription = '';
+        const gradeNum = parseInt(grade);
+        if (gradeNum >= 1 && gradeNum <= 4) {
+          styleDescription = 'детский, игровой: используй крупный шрифт (не менее 20px), много emoji (например, 🌟📚✏️🎉), закруглённые цветные рамки, пастельные фоны, минимум сплошного текста, задания подавай как "игровые станции" или "приключения"';
+        } else if (gradeNum >= 5 && gradeNum <= 7) {
+          styleDescription = 'учебный и нейтральный: шрифт 16px, минимум декора, акцент на ясности формулировок, используй таблицы или схемы при необходимости, цвета — только для выделения важного';
+        } else {
+          styleDescription = 'минималистичный и академический: чёрно-белая палитра с одним акцентным цветом, строгая типографика, без emoji, оптимизировано под печать на A4, всё — только по делу';
+        }
+
+        prompt = `Ты — учитель начальных классов Республики Беларусь и веб-дизайнер. `;
+        prompt += `На основе следующего фрагмента урока:\n«${lessonPlan}»\n`;
+        prompt += `создай **готовую HTML-страницу** рабочего листа для учащихся ${grade} класса.\n\n`;
+
+        if (goals.length > 0) {
+          prompt += `Цель: ${goals.join(', ')}.\n`;
+        }
+
+        prompt += `Требования:\n`;
+        prompt += `– Страница должна быть яркой, детской, красочной, с использованием цветов: синий (#2a5c82), оранжевый (#ff9e44), зелёный (#6ac078), фон — тёплый белый (#f9f7f0);\n`;
+        prompt += `– Оформление должно быть ${styleDescription};\n`;
+        prompt += `– Все задания размещены на одном экране (оптимизировано под печать на A4);\n`;
+
+        if (taskTypes.length > 0) {
+          prompt += `– Включи задания следующих типов: ${taskTypes.join(', ')};\n`;
+        }
+
+        if (extras.includes('Включить самопроверку или ключи')) {
+          prompt += `– Добавь раздел «Проверь себя» с краткими ответами;\n`;
+        }
+
+        prompt += `– Язык текста на странице — ${worksheetLang};\n`;
+        prompt += `– Код должен быть единым HTML-файлом (внутри <style>, без внешних зависимостей);\n`;
+        prompt += `– Не используй JavaScript — только HTML + CSS.\n`;
+        prompt += `– НЕ ОБЪЯСНЯЙ — сразу выдай только код.`;
+      } else {
+        // Режим "только текст"
+        prompt = `Ты — учитель начальных классов Республики Беларусь. `;
+        prompt += `На основе следующего фрагмента урока:\n«${lessonPlan}»\n`;
+        prompt += `создай рабочий лист для учащихся ${grade} класса.\n`;
+
+        if (goals.length > 0) {
+          prompt += `Цель: ${goals.join(', ')}.\n`;
+        }
+
+        prompt += `Требования:\n`;
+        prompt += `– Объём — 1 лист A4;\n`;
+
+        if (taskTypes.length > 0) {
+          prompt += `– Включить задания следующих типов: ${taskTypes.join(', ')};\n`;
+        }
+
+        if (extras.length > 0) {
+          prompt += `– Особые пожелания: ${extras.join(', ')};\n`;
+        }
+
+        prompt += `– Язык рабочего листа для учеников — ${worksheetLang}.`;
+      }
+
+      document.getElementById('promptOutput').textContent = prompt;
+      document.getElementById('outputSection').style.display = 'block';
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById('promptOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Промпт скопирован!');
+      });
+    }
+
+    function openInQwen() {
+      const text = encodeURIComponent(document.getElementById('promptOutput').textContent);
+      window.open(`https://chat.qwen.ai/?q=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>

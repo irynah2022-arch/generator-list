@@ -240,6 +240,7 @@
     <div class="checkbox-group" id="taskTypes">
       <label class="checkbox-item"><input type="checkbox" value="multiple_choice">Множественный выбор</label>
       <label class="checkbox-item"><input type="checkbox" value="short_answer">Краткий ответ</label>
+      <label class="checkbox-item"><input type="checkbox" value="open_ended">Открытый ответ</label>
       <label class="checkbox-item"><input type="checkbox" value="matching">Сопоставление</label>
       <label class="checkbox-item"><input type="checkbox" value="fill_blanks">Заполнение пропусков</label>
       <label class="checkbox-item"><input type="checkbox" value="true_false">Верно/неверно</label>
@@ -260,6 +261,7 @@
       <label class="checkbox-item"><input type="checkbox" value="min_text">Минимум текста</label>
       <label class="checkbox-item"><input type="checkbox" value="self_check">Самопроверка</label>
       <label class="checkbox-item"><input type="checkbox" value="a4_print">На 1 листе A4</label>
+      <label class="checkbox-item"><input type="checkbox" value="differentiated">Разноуровневые задания</label>
       <label class="checkbox-item">
         <input type="checkbox" value="other_extra"> Другое:
         <input type="text" id="otherExtraText" style="width:120px; margin-left:5px; padding:4px; font-size:13px;">
@@ -316,6 +318,7 @@
     const taskTypesRU = {
       multiple_choice: "Множественный выбор",
       short_answer: "Краткий ответ",
+      open_ended: "Задание с открытым ответом",
       matching: "Сопоставление",
       fill_blanks: "Заполнение пропусков",
       true_false: "Верно/неверно",
@@ -326,6 +329,7 @@
     const taskTypesBE = {
       multiple_choice: "Множны выбар",
       short_answer: "Кароткі адказ",
+      open_ended: "Заданне з адкрытым адказам",
       matching: "Супастаўленне",
       fill_blanks: "Запаўненне прабелаў",
       true_false: "Правільна/няправільна",
@@ -340,7 +344,8 @@
       real_life: "Связь с жизнью / краеведение",
       min_text: "Минимум текста",
       self_check: "Включить самопроверку или ключи",
-      a4_print: "Адаптация под печать на одном листе A4"
+      a4_print: "Адаптация под печать на одном листе A4",
+      differentiated: "Разноуровневые задания"
     };
     const extrasBE = {
       game_form: "Гульнявая форма",
@@ -348,7 +353,8 @@
       real_life: "Сувязь з жыццём / краязнаўства",
       min_text: "Мінімум тэксту",
       self_check: "Уключыць самаправерку ці ключы",
-      a4_print: "Адаптацыя пад друк на адным лісце A4"
+      a4_print: "Адаптацыя пад друк на адным лісце A4",
+      differentiated: "Рознаўзроўневыя заданні"
     };
 
     function getCheckedWithCustom(containerId, customInputId, dictRU, dictBE, lang) {
@@ -458,9 +464,10 @@
           ? `– Мова — беларуская мова. НЕ ТЛУМАЧ — адразу выдай толькі код.`
           : `– Язык — русский язык. НЕ ОБЪЯСНЯЙ — сразу выдай только код.`;
       } else {
+        // ТОЛЬКО ТЕКСТ ЗАДАНИЙ
         prompt += lang === 'be'
-          ? `Ствары рабочы ліст на аснове наступнага фрагмента ўрока:\n«${lessonPlan}»\nдля вучняў ${grade} класа.\n\n`
-          : `Создай рабочий лист на основе следующего фрагмента урока:\n«${lessonPlan}»\nдля учащихся ${grade} класса.\n\n`;
+          ? `Ствары **толькі тэкст заданняў** для рабочага ліста на аснове фрагмента ўрока:\n«${lessonPlan}»\nдля вучняў ${grade} класа.\n\n`
+          : `Создай **только текст заданий** для рабочего листа на основе фрагмента урока:\n«${lessonPlan}»\nдля учащихся ${grade} класса.\n\n`;
 
         if (goalsText.length > 0) {
           prompt += lang === 'be'
@@ -485,8 +492,8 @@
         }
 
         prompt += lang === 'be'
-          ? `– У рабочым лісце НЕ ПАВІННА быць гатовых адказаў — толькі заданні для самастойнага выканання.`
-          : `– В рабочем листе НЕ ДОЛЖНО быть готовых ответов — только задания для самостоятельного выполнения.`;
+          ? `– Выдай **толькі самі заданні**, без падказак, без адказаў, без каментароў і без HTML-кода;\n– Кожнае заданне пачынай з новага радка;\n– Не тлумач, што рабіць — адразу паказвай заданні.`
+          : `– Выдай **только сами задания**, без подсказок, без ответов, без комментариев и без HTML-кода;\n– Каждое задание начинай с новой строки;\n– Не объясняй, что делать — сразу показывай задания.`;
       }
 
       document.getElementById('promptOutput').textContent = prompt;

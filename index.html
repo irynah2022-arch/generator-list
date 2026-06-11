@@ -364,15 +364,15 @@
   </div>
 
   <div class="container">
-    <h1>🎨 Помощник учителя Беларуси — генератор промптов для рабочего листа учащегося</h1>
+    <h1> Помощник учителя Беларуси — генератор промптов для рабочего листа учащегося</h1>
     <p class="subtitle">Рабочие листы к вашему уроку!</p>
 
     <div class="tip-box">
-      💡 Если не выбрать типы заданий — ИИ автоматически подберёт оптимальные задания для вашей темы!
+       Если не выбрать типы заданий — ИИ автоматически подберёт оптимальные задания для вашей темы!
     </div>
 
     <div class="form-group">
-      <label for="worksheetLanguage">🔤 Язык рабочего листа для учеников:</label>
+      <label for="worksheetLanguage"> Язык рабочего листа:</label>
       <select id="worksheetLanguage">
         <option value="ru">Русский</option>
         <option value="be">Беларуская мова</option>
@@ -380,7 +380,7 @@
     </div>
 
     <div class="form-group">
-      <label for="subject">📚 Предмет:</label>
+      <label for="subject"> Предмет:</label>
       <select id="subject">
         <option value="bel_mova">Беларуская мова</option>
         <option value="bel_lit">Беларуская літаратура</option>
@@ -390,6 +390,7 @@
         <option value="rus_lit">Русская литература</option>
         <option value="angl_yaz">Английский язык</option>
         <option value="nem_yaz">Немецкий язык</option>
+        <option value="fr_yaz">Французский язык</option>
         <option value="matem">Математика</option>
         <option value="chel_mir">Человек и мир</option>
         <option value="izo">Изобразительное искусство</option>
@@ -415,7 +416,7 @@
     </div>
 
     <div class="form-group">
-      <label for="lessonPlan">📝 Вставьте текст плана-конспекта урока:</label>
+      <label for="lessonPlan"> Вставьте текст план-конспекта урока:</label>
       <textarea id="lessonPlan" placeholder="Пример: Тема — «Братья Гримм. Сказки». Учащиеся знакомятся с биографией братьев Гримм, узнают их самые известные сказки..."></textarea>
     </div>
 
@@ -446,13 +447,13 @@
           </label>
           <label class="option-item">
             <input type="radio" name="orientation" value="landscape">
-            <span>📐 Горизонтальный (297×210 мм)</span>
+            <span> Горизонтальный (297×210 мм)</span>
           </label>
         </div>
       </div>
 
       <div class="setting-card">
-        <h3>🎨 Стиль оформления:</h3>
+        <h3> Стиль оформления:</h3>
         <div class="option-group">
           <label class="option-item">
             <input type="radio" name="style" value="child" checked>
@@ -460,13 +461,13 @@
           </label>
           <label class="option-item">
             <input type="radio" name="style" value="academic">
-            <span>🎓 Академический (чистый)</span>
+            <span> Академический (чистый)</span>
           </label>
         </div>
       </div>
     </div>
 
-    <h2>🎯 Цель рабочего листа</h2>
+    <h2> Цель рабочего листа</h2>
     <div class="params-grid" id="goals">
       <label class="checkbox-item"><input type="checkbox" value="check_understanding">Проверка понимания</label>
       <label class="checkbox-item"><input type="checkbox" value="reinforce">Закрепление</label>
@@ -509,15 +510,17 @@
       <label class="checkbox-item"><input type="checkbox" value="self_check">Самопроверка</label>
       <label class="checkbox-item"><input type="checkbox" value="a4_print">На 1 листе А4</label>
       <label class="checkbox-item"><input type="checkbox" value="differentiated">Разноуровневые задания</label>
+      <label class="checkbox-item"><input type="checkbox" value="grading_scale" checked>Добавить шкалу оценивания</label>
+      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked>🇾 Национальный колорит (славянский тип)</label>
       <label class="checkbox-item" style="grid-column: 1 / -1;">
         Другое: <input type="text" id="otherExtra" style="margin-left: 8px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 250px;">
       </label>
     </div>
 
     <div class="button-group">
-      <button id="generateBtn" onclick="generatePrompt()">🎨 Сгенерировать промпт</button>
+      <button id="generateBtn" onclick="generatePrompt()"> Сгенерировать промпт</button>
       <button id="copyBtn" onclick="copyPrompt()" disabled>📋 Скопировать</button>
-      <button id="openQwenBtn" onclick="openInQwen()" disabled>🚀 Открыть в Qwen</button>
+      <button id="openQwenBtn" onclick="openInQwen()" disabled> Открыть в Qwen</button>
       <button id="downloadBtn" onclick="downloadAsHTML()" disabled>💾 Скачать HTML</button>
     </div>
 
@@ -581,7 +584,9 @@
       min_text: "Минимум текста",
       self_check: "Включить самопроверку или ключи",
       a4_print: "Адаптация под печать на одном листе A4",
-      differentiated: "Разноуровневые задания"
+      differentiated: "Разноуровневые задания",
+      grading_scale: "Добавить шкалу оценивания (баллы/критерии)",
+      slavic_look: "Национальный колорит (славянский тип внешности)"
     };
     const extrasBE = {
       game_form: "Гульнявая форма",
@@ -590,18 +595,21 @@
       min_text: "Мінімум тэксту",
       self_check: "Уключыць самаправерку ці ключы",
       a4_print: "Адаптацыя пад друк на адным лісце A4",
-      differentiated: "Рознаўзроўневыя заданні"
+      differentiated: "Рознаўзроўневыя заданні",
+      grading_scale: "Дадаць шкалу ацэньвання (балы/крытэрыі)",
+      slavic_look: "Нацыянальны каларыт (славянскі тып знешнасці)"
     };
 
     const subjectsRU = {
-      bel_mova: "белорусскому языку",
-      bel_lit: "белорусской литературе",
+      bel_mova: "беларускай мове",
+      bel_lit: "беларускай літаратуры",
       obuch_chtenie: "обучению грамоте (чтению)",
       obuch_pismo: "обучению грамоте (письму)",
       rus_yaz: "русскому языку",
       rus_lit: "русской литературе",
       angl_yaz: "английскому языку",
       nem_yaz: "немецкому языку",
+      fr_yaz: "французскому языку",
       matem: "математике",
       chel_mir: "человеку и миру",
       izo: "изобразительному искусству",
@@ -633,6 +641,7 @@
       rus_lit: "русской литературе",
       angl_yaz: "англійскай мове",
       nem_yaz: "нямецкай мове",
+      fr_yaz: "французскай мове",
       matem: "матэматыцы",
       chel_mir: "чалавеку і свету",
       izo: "выяўленчаму мастацтву",
@@ -681,8 +690,14 @@
       const orientation = document.querySelector('input[name="orientation"]:checked')?.value || 'portrait';
 
       if (!lessonPlan) {
-        showNotification(lang === 'be' ? "Калі ласка, увядзіце тэкст плана-канспекта!" : "Пожалуйста, введите текст плана-конспекта!", 'error');
+        showNotification(lang === 'be' ? "Калі ласка, увядзіце тэкст план-канспекта!" : "Пожалуйста, введите текст план-конспекта!", 'error');
         return;
+      }
+
+      // Определяем язык заданий
+      let taskLang = lang;
+      if (['angl_yaz', 'nem_yaz', 'fr_yaz'].includes(subjectKey)) {
+        taskLang = subjectKey === 'angl_yaz' ? 'en' : (subjectKey === 'nem_yaz' ? 'de' : 'fr');
       }
 
       const goalsText = getCheckedValues('goals', goalsRU, goalsBE, lang);
@@ -724,6 +739,16 @@
 
       prompt += lang === 'be' ? "Патрабаванні:\n" : "Требования:\n";
 
+      // === ЯЗЫК КОНТЕНТА (С УЧЕТОМ ИНОСТРАННЫХ ЯЗЫКОВ) ===
+      if (['angl_yaz', 'nem_yaz', 'fr_yaz'].includes(subjectKey)) {
+         const langName = subjectKey === 'angl_yaz' ? 'английском' : (subjectKey === 'nem_yaz' ? 'немецком' : 'французском');
+         prompt += `– **ЯЗЫК КОНТЕНТА**: Так как предмет — иностранный язык, ВСЕ задания, инструкции и тексты должны быть СТРОГО на ${langName} языке. Интерфейсные элементы (Класс, Дата, Имя) могут оставаться на русском/белорусском для удобства учителя.\n`;
+      } else {
+        prompt += lang === 'be'
+          ? `– **МОВА КАНТЭНТУ**: Увесь тэкст рабочага ліста (заданні, інструкцыі, загаловак) — СТРОГА на беларускай мове.\n`
+          : `– **ЯЗЫК КОНТЕНТА**: Весь текст рабочего листа (задания, инструкции, заголовок) — СТРОГО на русском языке.\n`;
+      }
+
       // === КОМПАКТНОСТЬ — ГЛАВНЫЙ ПРИОРИТЕТ ===
       prompt += lang === 'be'
         ? `– **КАМПАКТНАСЦЬ**: Запаўняй УСЮ старонку шчыльна, БЕЗ пустых месцаў! Мінімальныя адступы паміж заданнямі (5-8px). НЯМА вялікіх прабелаў!\n`
@@ -754,20 +779,20 @@
         ? `– **Кожнае заданне**: у сваёй унікальнай каляровай рамцы з эмодзі па тэме. Padding унутры рамкі — 8px. Margin паміж рамкамі — 8px.\n`
         : `– **Каждое задание**: в своей уникальной цветной рамке с эмодзи по теме. Padding внутри рамки — 8px. Margin между рамками — 8px.\n`;
 
-      // === ЦЕНТРИРОВАНИЕ И КОЛОНКИ ===
+      // === ВИЗУАЛИЗАЦИЯ А4 НА ЭКРАНЕ (WYSIWYG) ===
       prompt += lang === 'be'
-        ? `– **Цэнтраваць ліст**: <div style="max-width: ${pageWidth}; margin: 0 auto; padding: 8mm;">\n`
-        : `– **Центрировать лист**: <div style="max-width: ${pageWidth}; margin: 0 auto; padding: 8mm;">\n`;
+        ? `– **ВІЗУАЛІЗАЦЫЯ НА ЭКРАНЕ (ЯК У WORD/PDF)**: Каб карыстальнік адразу бачыў гатовыя лісты:\n  1. Ствары асобныя блокі <div class="a4-page"> для кожнай старонкі.\n  2. Кожны .a4-page павінен мець: width: ${pageWidth}; min-height: ${pageHeight}; background: white; margin: 20px auto; padding: 10mm; box-shadow: 0 0 15px rgba(0,0,0,0.2); border: 1px solid #ddd;\n  3. Гэта створыць эфект рэальных папяровых лістоў, якія ляжаць на стале. Пры друку (@media print) гэтыя цені і маргіны павінны знікаць!\n`
+        : `– **ВИЗУАЛИЗАЦИЯ НА ЭКРАНЕ (КАК В WORD/PDF)**: Чтобы пользователь сразу видел готовые листы:\n  1. Создай отдельные блоки <div class="a4-page"> для каждой страницы.\n  2. Каждый .a4-page должен иметь: width: ${pageWidth}; min-height: ${pageHeight}; background: white; margin: 20px auto; padding: 10mm; box-shadow: 0 0 15px rgba(0,0,0,0.2); border: 1px solid #ddd;\n  3. Это создаст эффект реальных бумажных листов, лежащих на столе. При печати (@media print) эти тени и отступы должны исчезать!\n`;
 
       // === КОЛИЧЕСТВО КОЛОНОК В ЗАВИСИМОСТИ ОТ ОРИЕНТАЦИИ ===
       prompt += lang === 'be'
-        ? `– **Размяшчаць заданні ў ${numColumns} калонкі** (CSS columns: ${numColumns}), калі магчыма. Калі не змяшчаецца — аўтаматычна пераносіць на новую калонку або НОВУЮ СТАРОНКУ А4. **НІКОЛІ НЕ АБРАЗАЦЬ**!\n`
-        : `– **Размещать задания в ${numColumns} колонки** (CSS columns: ${numColumns}), если возможно. Если не помещается — автоматически переносить на новую колонку или НОВУЮ СТРАНИЦУ А4. **НИКОГДА НЕ ОБРЕЗАТЬ**!\n`;
+        ? `– **Размяшчаць заданні ў ${numColumns} калонкі** (CSS columns: ${numColumns}) УНУТРЫ кожнага .a4-page. Калі не змяшчаецца — стварай новы <div class="a4-page">.\n`
+        : `– **Размещать задания в ${numColumns} колонки** (CSS columns: ${numColumns}) ВНУТРИ каждого .a4-page. Если не помещается — создавай новый <div class="a4-page">.\n`;
 
-      // === ФОРМАТ СТРАНИЦЫ ===
+      // === ЖЕСТКИЕ РАЗМЕРЫ ДЛЯ ПЕЧАТИ (СИНХРОНИЗАЦИЯ) ===
       prompt += lang === 'be'
-        ? `– **Фармат старонкі**: ${orientationName}, дакладныя памеры: шырыня ${pageWidth}, вышыня ${pageHeight}. CSS: @page { size: A4 ${orientationName}; margin: 8mm; }\n`
-        : `– **Формат страницы**: ${orientationName}, точные размеры: ширина ${pageWidth}, высота ${pageHeight}. CSS: @page { size: A4 ${orientationName}; margin: 8mm; }\n`;
+        ? `– **КРЫТЫЧНА ВАЖНА ДЛЯ ДРУКУ (PDF)**: Каб пазбегнуць абрэзкі і захавать візуальны выгляд:\n  1. @page { size: ${pageWidth} ${pageHeight}; margin: 0; }\n  2. @media print { .a4-page { margin: 0; box-shadow: none; border: none; page-break-after: always; width: 100%; height: 100%; } }\n  3. Памеры ў HTML (.a4-page) і ў CSS (@page) павінны быць ІДЭНТЫЧНЫМИ!\n`
+        : `– **КРИТИЧЕСКИ ВАЖНО ДЛЯ ПЕЧАТИ (PDF)**: Чтобы избежать обрезки и сохранить визуальный вид:\n  1. @page { size: ${pageWidth} ${pageHeight}; margin: 0; }\n  2. @media print { .a4-page { margin: 0; box-shadow: none; border: none; page-break-after: always; width: 100%; height: 100%; } }\n  3. Размеры в HTML (.a4-page) и в CSS (@page) должны быть ИДЕНТИЧНЫМИ!\n`;
 
       // === ПЕЧАТЬ С ФОНАМИ ===
       prompt += lang === 'be'
@@ -791,8 +816,8 @@
 
       // === ИЗОБРАЖЕНИЯ — НАДПИСИ ===
       prompt += lang === 'be'
-        ? `– **НАДПІСЫ НА ВЫЯВАХ**: Калі на выявах ёсць тэкст — ТОЛЬКІ ЗАГАЛОЎНЫМІ ЛІТАРАМІ! ТОЛЬКІ на беларускай мове (ніколі не выкарыстоўвай англійскія літары!). Лепш за ўсё — БЕЗ НАДПІСАЎ на выявах, калі гэта магчыма.\n`
-        : `– **НАДПИСИ НА ИЗОБРАЖЕНИЯХ**: Если на изображениях есть текст — ТОЛЬКО ЗАГЛАВНЫМИ БУКВАМИ! ТОЛЬКО на русском языке (никогда не используй английские буквы!). Лучше всего — БЕЗ НАДПИСЕЙ на изображениях, если это возможно.\n`;
+        ? `– **НАДПІСЫ НА ВЫЯВАХ**: Калі на выявах ёсць тэкст — ТОЛЬКІ ЗАГАЛОЎНЫМІ ЛІТАРАМІ! ТОЛЬКІ на мове ўрока. Лепш за ўсё — БЕЗ НАДПІСАЎ на выявах, калі гэта магчыма.\n`
+        : `– **НАДПИСИ НА ИЗОБРАЖЕНИЯХ**: Если на изображениях есть текст — ТОЛЬКО ЗАГЛАВНЫМИ БУКВАМИ! ТОЛЬКО на языке урока. Лучше всего — БЕЗ НАДПИСЕЙ на изображениях, если это возможно.\n`;
 
       // === ТОЧНОСТЬ ФОРМУЛИРОВОК ===
       prompt += lang === 'be'
@@ -831,8 +856,8 @@
 
       // === ПОДПИСЬ АВТОРА — КОМПАКТНАЯ ===
       prompt += lang === 'be'
-        ? `– **Подпіс аўтара**: "© Ірына Гаеўская, настаўнік пачатковых класаў, Рэспубліка Беларусь" — маленькім шрыфтам 9pt УНІЗЕ кожнай старонкі, padding 3px.\n`
-        : `– **Подпись автора**: "© Ирина Гаевская, учитель начальных классов, Республика Беларусь" — маленьким шрифтом 9pt ВНИЗУ каждой страницы, padding 3px.\n`;
+        ? `– **Подпіс аўтара**: "© Ірына Гаеўская, настаўнік пачатковых класаў, Рэспубліка Беларусь" — маленькім шрыфтам 9pt УНІЗЕ кожнай старонкі (.a4-page), padding 3px.\n`
+        : `– **Подпись автора**: "© Ирина Гаевская, учитель начальных классов, Республика Беларусь" — маленьким шрифтом 9pt ВНИЗУ каждой страницы (.a4-page), padding 3px.\n`;
 
       // === РЕФЛЕКСИЯ — КОМПАКТНАЯ ===
       prompt += lang === 'be'
@@ -849,6 +874,11 @@
         ? `– **БЕЗ ЛІШНІХ АДСТУПАЎ**: Няма пустых радкоў паміж заданнямі! Заданні ідуць шчыльна адно за адным. Выкарыстоўвай CSS: .task { margin-bottom: 8px; }.\n`
         : `– **БЕЗ ЛИШНИХ ОТСТУПОВ**: Нет пустых строк между заданиями! Задания идут плотно одно за другим. Используй CSS: .task { margin-bottom: 8px; }.\n`;
 
+      // === ЗАПОЛНЕНИЕ ПУСТОТЫ (НОВОЕ) ===
+      prompt += lang === 'be'
+        ? `– **ЗАПОЎНІ ПУСТАТУ**: Калі заданні заканчваюцца, а месца на лісце яшчэ ёсць, дадай дэкаратыўныя элементы, карысныя парады або міні-пытанні, каб ліст выглядаў насычаным.\n`
+        : `– **ЗАПОЛНИ ПУСТОТУ**: Если задания заканчиваются, а место на листе еще есть, добавь декоративные элементы, полезные советы или мини-вопросы, чтобы лист выглядел насыщенным.\n`;
+
       // === ТИПЫ ЗАДАНИЙ ===
       if (autoSelectTasks) {
         prompt += lang === 'be'
@@ -856,8 +886,8 @@
           : `– **Типы заданий**: ИИ сам подберёт оптимальные типы для этой темы (заполнение пропусков, множественный выбор, сопоставление, верно/неверно, таблицы, мини-кейс и др.).\n`;
       } else {
         prompt += lang === 'be'
-          ? `– **Тыпы заданняў для ўключэння**: ${taskTypesText.join(', ')}. **ВЫКАРЫСТОЎВАЙ ТОЛЬКІ ГЭТЫЯ ТЫПЫ!** Кожны тып — хаця б адным заданнем.\n`
-          : `– **Типы заданий для включения**: ${taskTypesText.join(', ')}. **ИСПОЛЬЗУЙ ТОЛЬКО ЭТИ ТИПЫ!** Каждый тип — хотя бы одним заданием.\n`;
+          ? `– **Тыпы заданняў для ўключэння**: ${taskTypesText.join(', ')}. **ВЫКАРЫСТОВАЙ ТОЛЬКІ ГЭТЫЯ ТЫПЫ!** Кожны тып — адным заданнем.\n`
+          : `– **Типы заданий для включения**: ${taskTypesText.join(', ')}. **ИСПОЛЬЗУЙ ТОЛЬКО ЭТИ ТИПЫ!** Каждый тип — одним заданием.\n`;
       }
 
       // === ДОПОЛНИТЕЛЬНЫЕ ПОЖЕЛАНИЯ ===
@@ -865,19 +895,34 @@
         prompt += lang === 'be' ? `– Улічвай: ${extrasText.join(', ')};\n` : `– Учитывай: ${extrasText.join(', ')};\n`;
       }
 
+      // === ШКАЛА ОЦЕНИВАНИЯ ===
+      const hasGradingScale = document.querySelector('input[value="grading_scale"]').checked;
+      if (hasGradingScale) {
+        prompt += lang === 'be'
+          ? `– **ШКАЛА АЦЭНЬВАННЯ**: Дадай у канцы апошняга ліста кампактны блок "Мае балы": ______ / ______. Крытэрыі: "Выдатна" (9-10 балаў), "Добра" (7-8), "Здавальняюча" (5-6).\n`
+          : `– **ШКАЛА ОЦЕНИВАНИЯ**: Добавь в конце последнего листа компактный блок "Мои баллы": ______ / ______. Критерии: "Отлично" (9-10 баллов), "Хорошо" (7-8), "Удовлетворительно" (5-6).\n`;
+      }
+
       // === ГЕНЕРАЦИЯ ИЗОБРАЖЕНИЙ ===
       prompt += lang === 'be'
-        ? `– **ГЕНЕРАЦЫЯ ВЫЯЎ**: Згенеруй 5-10 рэальных тэматычных выяў (base64 або URL), убудуй у HTML. Усе выявы павінны быць цалкам бачныя, без абрэзкі! НЕ выкарыстоўвай placeholder'ы!\n`
+        ? `– **ГЕНЕРАЦЫЯ ВЫЯ**: Згенеруй 5-10 рэальных тэматычных выяў (base64 або URL), убудуй у HTML. Усе выявы павінны быць цалкам бачныя, без абрэзкі! НЕ выкарыстоўвай placeholder'ы!\n`
         : `– **ГЕНЕРАЦИЯ ИЗОБРАЖЕНИЙ**: Сгенерируй 5-10 реальных тематических изображений (base64 или URL), встрой в HTML. Все изображения должны быть полностью видны, без обрезки! НЕ используй placeholder'ы!\n`;
 
-      // === СЛАВЯНСКАЯ ВНЕШНОСТЬ ===
-      prompt += lang === 'be'
-        ? `– **КРЫТЫЧНА: Калі на выявах ёсць людзі/дзеці — ТОЛЬКІ СЛАВЯНСКАЙ ЗНЕШНАСЦІ** (светлая скура, светлыя/русыя валасы, блакітныя/шэрыя вочы). НЕ афрыканцы, НЕ азіяты!\n`
-        : `– **КРИТИЧЕСКИ: Если на изображениях есть люди/дети — ТОЛЬКО СЛАВЯНСКОЙ ВНЕШНОСТИ** (светлая кожа, светлые/русые волосы, голубые/серые глаза). НЕ африканцы, НЕ азиаты!\n`;
+      // === СЛАВЯНСКАЯ ВНЕШНОСТЬ (ПРОВЕРКА ЧЕКБОКСА) ===
+      const hasSlavicLook = document.querySelector('input[value="slavic_look"]').checked;
+      if (hasSlavicLook) {
+        prompt += lang === 'be'
+          ? `– **КРЫТЫЧНА: Калі на выявах ёсць людзі/дзеці — ТОЛЬКІ СЛАВЯНСКАЙ ЗНЕШНАСЦІ** (светлая скура, светлыя/русыя валасы, блакітныя/шэрыя вочы). НЕ афрыканцы, НЕ азіяты!\n`
+          : `– **КРИТИЧЕСКИ: Если на изображениях есть люди/дети — ТОЛЬКО СЛАВЯНСКОЙ ВНЕШНОСТИ** (светлая кожа, светлые/русые волосы, голубые/серые глаза). НЕ африканцы, НЕ азиаты!\n`;
+      } else {
+        prompt += lang === 'be'
+          ? `– **ЗНЕШНАСЦЬ ЛЮДЗЕЙ**: Дазволена розная этнічная прыналежнасць (адпаведна тэме ўрока, напр., для англійскай мовы).\n`
+          : `– **ВНЕШНОСТЬ ЛЮДЕЙ**: Разрешена разная этническая принадлежность (соответственно теме урока, напр., для английского языка).\n`;
+      }
 
       // === КАЧЕСТВО ИЗОБРАЖЕНИЙ ===
       prompt += lang === 'be'
-        ? `– **Якасць выяў**: якасныя, тэматычна дакладныя, з чыткімі дэталямі.\n`
+        ? `– **Якасць выяў**: якасныя, тэматычна дакладныя, з пэўнымі дэталямі.\n`
         : `– **Качество изображений**: качественные, тематически точные, с чёткими деталями.\n`;
 
       // === БЕЗ ГОТОВЫХ ОТВЕТОВ ===
@@ -896,18 +941,21 @@
       // === ПРОВЕРКА ПЕРЕД ГЕНЕРАЦИЕЙ ===
       prompt += `\n\n=== ✅ ПРОВЕРКА ПЕРЕД ГЕНЕРАЦИЕЙ ===
 Прежде чем генерировать код, ПРОВЕРЬ:
-1. ✓ КОМПАКТНОСТЬ: margin 5-8px, padding 6-8px, line-height 1.3?
-2. ✓ КОЛОНКИ: ${numColumns} ${orientation === 'landscape' ? 'колонки (альбомная)' : 'колонки (портретная)'}?
-3. ✓ ИЗОБРАЖЕНИЯ: max-width: 100%, height: auto, object-fit: contain (БЕЗ ОБРЕЗКИ)?
-4. ✓ Надписи на изображениях: ТОЛЬКО ЗАГЛАВНЫМИ БУКВАМИ, только на ${lang === 'be' ? 'беларускай' : 'русском'} языке (или БЕЗ надписей)?
-5. ✓ Текст заданий — СТРОГО чёрный (#000000)?
-6. ✓ Если есть люди — ТОЛЬКО славянской внешности?
-7. ✓ Формат страницы: ${orientationName}, размеры ${pageWidth}×${pageHeight}?
-8. ✓ CSS для печати с сохранением фонов добавлен?
-9. ✓ Если не помещается — перенос на новую страницу, НЕ обрезка?
-10. ✓ Подпись автора — внизу каждой страницы (9pt)?
-11. ✓ Только выбранные типы заданий (или автоподбор)?
-12. ✓ НЕТ больших пустых пространств? ВСЁ заполнено плотно?
+1. ✓ ВИЗУАЛИЗАЦИЯ: Использованы блоки .a4-page с width: ${pageWidth}, min-height: ${pageHeight}, box-shadow и margin: 20px auto?
+2. ✓ СИНХРОНИЗАЦИЯ: Размеры в CSS @page (${pageWidth} ${pageHeight}) идентичны размерам .a4-page?
+3. ✓ КОМПАКТНОСТЬ: margin 5-8px, padding 6-8px, line-height 1.3?
+4. ✓ КОЛОНКИ: ${numColumns} ${orientation === 'landscape' ? 'колонки (альбомная)' : 'колонки (портретная)'} внутри .a4-page?
+5. ✓ ИЗОБРАЖЕНИЯ: max-width: 100%, height: auto, object-fit: contain (БЕЗ ОБРЕЗКИ)?
+6. ✓ Надписи на изображениях: ТОЛЬКО ЗАГЛАВНЫМИ БУКВАМИ, только на языке урока (или БЕЗ надписей)?
+7. ✓ Текст заданий — СТРОГО чёрный (#000000)?
+8. ✓ Внешность людей: ${hasSlavicLook ? 'ТОЛЬКО славянская' : 'Соответствует теме урока'}?
+9. ✓ CSS для печати (.a4-page { margin: 0; box-shadow: none; }) добавлен?
+10. ✓ Если не помещается — новый .a4-page, НЕ обрезка?
+11. ✓ Подпись автора — внизу каждого .a4-page (9pt)?
+12. ✓ Только выбранные типы заданий (или автоподбор)?
+13. ✓ ПУСТОТА ЗАПОЛНЕНА: Нет больших пустых пространств? ВСЁ заполнено плотно?
+14. ✓ ${hasGradingScale ? 'Добавлена шкала оценивания?' : 'Шкала оценивания не требуется?'}
+15. ✓ Язык заданий: ${['angl_yaz', 'nem_yaz', 'fr_yaz'].includes(subjectKey) ? 'СТРОГО иностранный язык' : (lang === 'be' ? 'Белорусский' : 'Русский')}?
 
 Если хотя бы один пункт НЕ выполнен — ИСПРАВЬ перед генерацией!`;
 
@@ -924,13 +972,13 @@
       if (!text) { showNotification("Сначала сгенерируйте промпт!", 'error'); return; }
       navigator.clipboard.writeText(text).then(() => {
         showNotification("✅ Промпт скопирован!");
-      }).catch(() => { showNotification("❌ Не удалось скопировать", 'error'); });
+      }).catch(() => { showNotification(" Не удалось скопировать", 'error'); });
     }
 
     function downloadAsHTML() {
       const htmlContent = document.getElementById('htmlOutput').textContent;
       if (!htmlContent || htmlContent.trim() === '') {
-        showNotification("⚠️ Сначала получите HTML от Qwen и вставьте ниже", 'error');
+        showNotification("️ Сначала получите HTML от Qwen и вставьте ниже", 'error');
         const existingField = document.getElementById('htmlInputField');
         if (existingField) { existingField.scrollIntoView({ behavior: 'smooth' }); return; }
         const div = document.createElement('div');
@@ -938,7 +986,7 @@
         div.style.cssText = 'margin-top: 20px; padding: 20px; background: #f0f9ff; border-radius: 12px; border: 3px solid #4a90e2;';
         div.innerHTML = `<label style="font-weight: bold; color: #2a5c82; margin-bottom: 10px; display: block;">📄 Вставьте HTML-код от Qwen:</label>
           <textarea id="htmlCodeInput" placeholder="<html>...вставьте код...</html>" style="width: 100%; min-height: 300px; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-family: monospace; font-size: 13px;"></textarea>
-          <button onclick="saveAndDownloadHTML()" style="margin-top: 10px; padding: 12px 24px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">💾 Скачать файл</button>`;
+          <button onclick="saveAndDownloadHTML()" style="margin-top: 10px; padding: 12px 24px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;"> Скачать файл</button>`;
         document.querySelector('.container').appendChild(div);
         div.scrollIntoView({ behavior: 'smooth' });
         return;

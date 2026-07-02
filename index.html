@@ -79,9 +79,7 @@
       transition: all 0.2s;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-    .action-buttons button:active {
-      transform: scale(0.95);
-    }
+    .action-buttons button:active { transform: scale(0.95); }
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -113,9 +111,7 @@
       align-items: center;
       gap: 8px;
     }
-    .form-group {
-      margin-bottom: 16px;
-    }
+    .form-group { margin-bottom: 16px; }
     label {
       display: block;
       margin-bottom: 6px;
@@ -123,7 +119,7 @@
       color: var(--primary);
       font-size: 14px;
     }
-    textarea, select, input[type="text"] {
+    textarea, select, input[type="text"], input[type="number"] {
       width: 100%;
       padding: 12px;
       margin-bottom: 12px;
@@ -134,77 +130,18 @@
       font-family: inherit;
       transition: border-color 0.3s;
     }
-    textarea:focus, select:focus, input[type="text"]:focus {
+    textarea:focus, select:focus, input:focus {
       outline: none;
       border-color: var(--accent-blue);
     }
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+    textarea { min-height: 100px; resize: vertical; }
     
-    .params-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 15px 0;
-    }
-    .params-section {
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      position: relative;
-      overflow: hidden;
-    }
-    .params-section::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 6px;
-    }
-    .params-section h3 {
-      margin: 0 0 12px 0;
-      font-size: 17px;
-      font-weight: 700;
-      padding-bottom: 8px;
-      border-bottom: 2px solid rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 2;
-    }
     .params-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
-    .params-section:nth-child(1) {
-      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-      border: 1px solid #c8e6c9;
-    }
-    .params-section:nth-child(1)::before { background: #4CAF50; }
-    .params-section:nth-child(2) {
-      background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-      border: 1px solid #ffd54f;
-    }
-    .params-section:nth-child(2)::before { background: #FF9800; }
-    .params-section:nth-child(3) {
-      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-      border: 1px solid #ce93d8;
-    }
-    .params-section:nth-child(3)::before { background: #9C27B0; }
-    .params-section:nth-child(4) {
-      background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
-      border: 1px solid #80cbc4;
-    }
-    .params-section:nth-child(4)::before { background: #009688; }
     
-    .checkbox-group, .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
     .checkbox-item, .radio-item {
       display: flex;
       align-items: center;
@@ -214,9 +151,45 @@
       border-radius: 10px;
       font-size: 14px;
     }
-    .checkbox-item input, .radio-item input {
-      margin: 0;
+    .checkbox-item input, .radio-item input { margin: 0; }
+    
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
     }
+    .setting-card {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      border: 1px solid #90caf9;
+      border-radius: 12px;
+      padding: 15px;
+    }
+    .setting-card h3 {
+      color: var(--primary);
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+    }
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    .option-item:hover { background: #f0f8ff; }
+    .option-item input { margin: 0; }
     
     .button-group {
       display: grid;
@@ -248,19 +221,10 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
-    #generateBtn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    #copyBtn {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    }
-    #openQwenBtn {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
-    #downloadBtn {
-      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-      color: #1a1a1a;
-    }
+    #generateBtn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    #copyBtn { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    #openQwenBtn { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    #downloadBtn { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #1a1a1a; }
     
     .tip-box {
       background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
@@ -290,12 +254,8 @@
       from { transform: translateY(-100px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-    .notification.success {
-      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    }
-    .notification.error {
-      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-    }
+    .notification.success { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    .notification.error { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
     
     footer {
       text-align: center;
@@ -313,6 +273,7 @@
       .button-group { grid-template-columns: 1fr; }
       .action-buttons { gap: 4px; }
       .action-buttons button { font-size: 11px; padding: 5px 8px; }
+      .settings-grid { grid-template-columns: 1fr; }
     }
     
     @media (max-width: 480px) {
@@ -324,21 +285,10 @@
       .checkbox-item, .radio-item { font-size: 13px; padding: 8px; }
     }
     
-    /* === ПЕЧАТЬ: СОХРАНЕНИЕ ФОНОВ И ЦВЕТОВ === */
     @media print {
-      body {
-        background: white !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      .container, .params-section {
-        box-shadow: none !important;
-        border: none !important;
-      }
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
+      body { background: white !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .container { box-shadow: none !important; border: none !important; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     }
   </style>
 </head>
@@ -359,28 +309,28 @@
       <button style="background:#FF9800;" onclick="window.open('https://irynah2022-arch.github.io/generator-vizual/', '_blank')">Наглядный материал</button>
       <button style="background:#FF5722;" onclick="window.open('https://irynah2022-arch.github.io/generator_interactiv/', '_blank')">Интерактив</button>
       <button style="background:#795548;" onclick="window.open('https://e-padruchnik.adu.by/', '_blank')">Электронные учебники</button>
-      <button style="background:#009688;" onclick="window.open('https://eior.by/obrazovanie/obshchee-srednee/index.php', '_blank')">EIOR.by</button>
+      <button style="background:#009688;" onclick="window.open('https://eior.by/', '_blank')">EIOR.by</button>
     </div>
   </div>
 
   <div class="container">
-    <h1> Помощник учителя Беларуси — генератор промптов для рабочего листа учащегося</h1>
-    <p class="subtitle">Рабочие листы к вашему уроку!</p>
+    <h1>🎓 Помощник учителя Беларуси — генератор промптов для рабочего листа учащегося</h1>
+    <p class="subtitle">Рабочие листы для вашего урока!</p>
 
     <div class="tip-box">
-       Если не выбрать типы заданий — ИИ автоматически подберёт оптимальные задания для вашей темы!
+      💡 Отметьте необходимые параметры!
     </div>
 
     <div class="form-group">
-      <label for="worksheetLanguage"> Язык рабочего листа:</label>
+      <label for="worksheetLanguage">🌐 Язык обучения:</label>
       <select id="worksheetLanguage">
-        <option value="ru">Русский</option>
+        <option value="ru">Русский язык</option>
         <option value="be">Беларуская мова</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="subject"> Предмет:</label>
+      <label for="subject">📚 Предмет:</label>
       <select id="subject">
         <option value="bel_mova">Беларуская мова</option>
         <option value="bel_lit">Беларуская літаратура</option>
@@ -416,12 +366,12 @@
     </div>
 
     <div class="form-group">
-      <label for="lessonPlan"> Вставьте текст план-конспекта урока:</label>
-      <textarea id="lessonPlan" placeholder="Пример: Тема — «Братья Гримм. Сказки». Учащиеся знакомятся с биографией братьев Гримм, узнают их самые известные сказки..."></textarea>
+      <label for="lessonPlan">📝 Тема или план-конспект урока:</label>
+      <textarea id="lessonPlan" placeholder="Пример: Тема — «Формы земной поверхности». Учащиеся знакомятся с горой, холмом, равниной, оврагом..."></textarea>
     </div>
 
     <div class="form-group">
-      <label for="grade">📚 Выберите класс:</label>
+      <label for="grade">🎒 Класс:</label>
       <select id="grade">
         <option value="1">1 класс</option>
         <option value="2">2 класс</option>
@@ -437,23 +387,35 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label for="taskCount">🔢 Количество заданий:</label>
+      <select id="taskCount">
+        <option value="3">3 задания</option>
+        <option value="4">4 задания</option>
+        <option value="5">5 заданий</option>
+        <option value="6">6 заданий</option>
+        <option value="7">7 заданий</option>
+        <option value="8">8 заданий</option>
+      </select>
+    </div>
+
     <div class="settings-grid">
       <div class="setting-card">
-        <h3>📐 Формат А4</h3>
+        <h3>📐 Ориентация А4</h3>
         <div class="option-group">
           <label class="option-item">
             <input type="radio" name="orientation" value="portrait" checked>
-            <span>📄 Вертикальный (210×297 мм)</span>
+            <span>📄 Вертикальная (210×297 мм)</span>
           </label>
           <label class="option-item">
             <input type="radio" name="orientation" value="landscape">
-            <span> Горизонтальный (297×210 мм)</span>
+            <span>📄 Горизонтальная (297×210 мм)</span>
           </label>
         </div>
       </div>
 
       <div class="setting-card">
-        <h3> Стиль оформления:</h3>
+        <h3>🎨 Стиль</h3>
         <div class="option-group">
           <label class="option-item">
             <input type="radio" name="style" value="child" checked>
@@ -461,15 +423,14 @@
           </label>
           <label class="option-item">
             <input type="radio" name="style" value="academic">
-            <span> Академический (чистый)</span>
+            <span>🎓 Академический (чистый)</span>
           </label>
         </div>
       </div>
     </div>
 
-    <h2> Цель рабочего листа</h2>
+    <h2>🎯 Цель рабочего листа</h2>
     <div class="params-grid" id="goals">
-      <label class="checkbox-item"><input type="checkbox" value="check_understanding">Проверка понимания</label>
       <label class="checkbox-item"><input type="checkbox" value="reinforce">Закрепление</label>
       <label class="checkbox-item"><input type="checkbox" value="test_prep">Подготовка к контрольной</label>
       <label class="checkbox-item"><input type="checkbox" value="lit_literacy">Читательская грамотность</label>
@@ -483,7 +444,7 @@
 
     <h2>🧩 Типы заданий</h2>
     <div class="tip-box">
-      💡 Если ничего не выбрать — ИИ сам подберёт оптимальные типы заданий!
+      💡 Выберите типы заданий для включения в рабочий лист
     </div>
     <div class="params-grid" id="taskTypes">
       <label class="checkbox-item"><input type="checkbox" value="multiple_choice">Множественный выбор</label>
@@ -496,6 +457,7 @@
       <label class="checkbox-item"><input type="checkbox" value="mini_case">Мини-кейс</label>
       <label class="checkbox-item"><input type="checkbox" value="drawing">Рисунок или схема</label>
       <label class="checkbox-item"><input type="checkbox" value="creative_task">Творческое задание</label>
+      <label class="checkbox-item"><input type="checkbox" value="coloring">🖍️ Раскрась (ч/б контур)</label>
       <label class="checkbox-item" style="grid-column: 1 / -1;">
         Другое: <input type="text" id="otherTaskType" style="margin-left: 8px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 250px;">
       </label>
@@ -508,19 +470,19 @@
       <label class="checkbox-item"><input type="checkbox" value="real_life">Связь с жизнью</label>
       <label class="checkbox-item"><input type="checkbox" value="min_text">Минимум текста</label>
       <label class="checkbox-item"><input type="checkbox" value="self_check">Самопроверка</label>
-      <label class="checkbox-item"><input type="checkbox" value="a4_print">На 1 листе А4</label>
       <label class="checkbox-item"><input type="checkbox" value="differentiated">Разноуровневые задания</label>
-      <label class="checkbox-item"><input type="checkbox" value="grading_scale" checked>Добавить шкалу оценивания</label>
-      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked>🇾 Национальный колорит (славянский тип)</label>
+      <label class="checkbox-item"><input type="checkbox" value="reflection" checked>💭 Рефлексия</label>
+      <label class="checkbox-item"><input type="checkbox" value="grading_scale" checked>⭐ Шкала оценивания</label>
+      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked>Национальный калорит</label>
       <label class="checkbox-item" style="grid-column: 1 / -1;">
         Другое: <input type="text" id="otherExtra" style="margin-left: 8px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 250px;">
       </label>
     </div>
 
     <div class="button-group">
-      <button id="generateBtn" onclick="generatePrompt()"> Сгенерировать промпт</button>
+      <button id="generateBtn" onclick="generatePrompt()">🪄 Сгенерировать промпт</button>
       <button id="copyBtn" onclick="copyPrompt()" disabled>📋 Скопировать</button>
-      <button id="openQwenBtn" onclick="openInQwen()" disabled> Открыть в Qwen</button>
+      <button id="openQwenBtn" onclick="openInQwen()" disabled>🤖 Открыть в Qwen</button>
       <button id="downloadBtn" onclick="downloadAsHTML()" disabled>💾 Скачать HTML</button>
     </div>
 
@@ -533,137 +495,113 @@
   </div>
 
   <script>
-    const goalsRU = {
-      check_understanding: "Проверка понимания нового материала",
-      reinforce: "Закрепление пройденного",
-      test_prep: "Подготовка к контрольной работе",
-      lit_literacy: "Развитие читательской грамотности",
-      math_literacy: "Развитие математической грамотности",
-      sci_literacy: "Развитие естественнонаучной грамотности",
-      fin_literacy: "Развитие финансовой грамотности"
-    };
-    const goalsBE = {
-      check_understanding: "Праверка разумення новага матэрыялу",
-      reinforce: "Замацаванне пройдзенага",
-      test_prep: "Падрыхтоўка да кантрольнай работы",
-      lit_literacy: "Развіццё чытацкай граматнасці",
-      math_literacy: "Развіццё матэматычнай граматнасці",
-      sci_literacy: "Развіццё прыродазнаўчай граматнасці",
-      fin_literacy: "Развіццё фінансавай граматнасці"
-    };
-
-    const taskTypesRU = {
-      multiple_choice: "Множественный выбор",
-      short_answer: "Краткий ответ",
-      open_ended: "Задание с открытым ответом",
-      matching: "Сопоставление",
-      fill_blanks: "Заполнение пропусков",
-      true_false: "Верно/неверно",
-      fill_table: "Заполнение таблицы",
-      mini_case: "Мини-кейс с вопросами",
-      drawing: "Рисование / схема / модель",
-      creative_task: "Творческое задание"
-    };
-    const taskTypesBE = {
-      multiple_choice: "Множны выбар",
-      short_answer: "Кароткі адказ",
-      open_ended: "Заданне з адкрытым адказам",
-      matching: "Супастаўленне",
-      fill_blanks: "Запаўненне прабелаў",
-      true_false: "Правільна/няправільна",
-      fill_table: "Запаўненне табліцы",
-      mini_case: "Міні-кейс з пытаннямі",
-      drawing: "Малюнак / схема / мадэль",
-      creative_task: "Творчае заданне"
-    };
-
-    const extrasRU = {
-      game_form: "Игровая форма",
-      inclusive: "Инклюзивный подход",
-      real_life: "Связь с жизнью / краеведение",
-      min_text: "Минимум текста",
-      self_check: "Включить самопроверку или ключи",
-      a4_print: "Адаптация под печать на одном листе A4",
-      differentiated: "Разноуровневые задания",
-      grading_scale: "Добавить шкалу оценивания (баллы/критерии)",
-      slavic_look: "Национальный колорит (славянский тип внешности)"
-    };
-    const extrasBE = {
-      game_form: "Гульнявая форма",
-      inclusive: "Інклюзіўны падыход",
-      real_life: "Сувязь з жыццём / краязнаўства",
-      min_text: "Мінімум тэксту",
-      self_check: "Уключыць самаправерку ці ключы",
-      a4_print: "Адаптацыя пад друк на адным лісце A4",
-      differentiated: "Рознаўзроўневыя заданні",
-      grading_scale: "Дадаць шкалу ацэньвання (балы/крытэрыі)",
-      slavic_look: "Нацыянальны каларыт (славянскі тып знешнасці)"
-    };
-
     const subjectsRU = {
-      bel_mova: "беларускай мове",
-      bel_lit: "беларускай літаратуры",
-      obuch_chtenie: "обучению грамоте (чтению)",
-      obuch_pismo: "обучению грамоте (письму)",
-      rus_yaz: "русскому языку",
-      rus_lit: "русской литературе",
-      angl_yaz: "английскому языку",
-      nem_yaz: "немецкому языку",
-      fr_yaz: "французскому языку",
-      matem: "математике",
-      chel_mir: "человеку и миру",
-      izo: "изобразительному искусству",
-      trud: "трудовому обучению",
-      muzyka: "музыке",
-      informatika: "информатике",
-      vsem_ist: "всемирной истории",
-      ist_bel_context: "истории Беларуси в контексте всемирной истории",
-      ist_bel: "истории Беларуси",
-      obshestvo: "обществоведению",
-      geografiya: "географии",
-      biologiya: "биологии",
-      fizika: "физике",
-      astronomiya: "астрономии",
-      himiya: "химии",
-      iskusstvo: "искусству",
-      cherchenie: "черчению",
-      obzh: "основам безопасности жизнедеятельности",
-      fizkultura: "физической культуре и здоровью",
-      dopriziv: "допризывной подготовке",
+      bel_mova: "беларускай мове", bel_lit: "беларускай літаратуры",
+      obuch_chtenie: "обучению грамоте (чтению)", obuch_pismo: "обучению грамоте (письму)",
+      rus_yaz: "русскому языку", rus_lit: "русской литературе",
+      angl_yaz: "английскому языку", nem_yaz: "немецкому языку", fr_yaz: "французскому языку",
+      matem: "математике", chel_mir: "человек и мир", izo: "изобразительному искусству",
+      trud: "трудовому обучению", muzyka: "музыке", informatika: "информатике",
+      vsem_ist: "всемирной истории", ist_bel_context: "истории Беларуси в контексте всемирной истории",
+      ist_bel: "истории Беларуси", obshestvo: "обществоведению", geografiya: "географии",
+      biologiya: "биологии", fizika: "физике", astronomiya: "астрономии", himiya: "химии",
+      iskusstvo: "искусству", cherchenie: "черчению", obzh: "основам безопасности жизнедеятельности",
+      fizkultura: "физической культуре и здоровью", dopriziv: "допризывной подготовке",
       medpodgotovka: "медицинской подготовке"
     };
     const subjectsBE = {
-      bel_mova: "беларускай мове",
-      bel_lit: "беларускай літаратуры",
-      obuch_chtenie: "навучанню грамаце (чытанню)",
-      obuch_pismo: "навучанню грамаце (пісьму)",
-      rus_yaz: "русскому языку",
-      rus_lit: "русской литературе",
-      angl_yaz: "англійскай мове",
-      nem_yaz: "нямецкай мове",
-      fr_yaz: "французскай мове",
-      matem: "матэматыцы",
-      chel_mir: "чалавеку і свету",
-      izo: "выяўленчаму мастацтву",
-      trud: "працоўнаму навучанню",
-      muzyka: "музыцы",
-      informatika: "інфарматыцы",
-      vsem_ist: "сусветнай гісторыі",
-      ist_bel_context: "гісторыі Беларусі ў кантэксце сусветнай гісторыі",
-      ist_bel: "гісторыі Беларусі",
-      obshestvo: "грамадазнаўству",
-      geografiya: "геаграфіі",
-      biologiya: "біялогіі",
-      fizika: "фізіцы",
-      astronomiya: "астраноміі",
-      himiya: "хіміі",
-      iskusstvo: "мастацтву",
-      cherchenie: "чарчэнню",
-      obzh: "асновам бяспекі жыццядзейнасці",
-      fizkultura: "фізічнай культуры і здароўю",
-      dopriziv: "дапрызванай падрыхтоўцы",
+      bel_mova: "беларускай мове", bel_lit: "беларускай літаратуры",
+      obuch_chtenie: "навучанню грамаце (чытанню)", obuch_pismo: "навучанню грамаце (пісьму)",
+      rus_yaz: "рускай мове", rus_lit: "рускай літаратуры",
+      angl_yaz: "англійскай мове", nem_yaz: "нямецкай мове", fr_yaz: "французскай мове",
+      matem: "матэматыцы", chel_mir: "чалавек і свет", izo: "выяўленчаму мастацтву",
+      trud: "працоўнаму навучанню", muzyka: "музыцы", informatika: "інфарматыцы",
+      vsem_ist: "сусветнай гісторыі", ist_bel_context: "гісторыі Беларусі ў кантэксце сусветнай гісторыі",
+      ist_bel: "гісторыі Беларусі", obshestvo: "грамадазнаўству", geografiya: "геаграфіі",
+      biologiya: "біялогіі", fizika: "фізіцы", astronomiya: "астраноміі", himiya: "хіміі",
+      iskusstvo: "мастацтву", cherchenie: "чарчэнню", obzh: "асновам бяспекі жыццядзейнасці",
+      fizkultura: "фізічнай культуры і здароўю", dopriziv: "дапрызванай падрыхтоўцы",
       medpodgotovka: "медыцынскай падрыхтоўцы"
     };
+
+    const goalsRU = {
+      reinforce: "Закрепление", test_prep: "Подготовка к контрольной",
+      lit_literacy: "Читательская грамотность", math_literacy: "Математическая грамотность",
+      sci_literacy: "Естественнонаучная грамотность", fin_literacy: "Финансовая грамотность"
+    };
+    const goalsBE = {
+      reinforce: "Замацаванне", test_prep: "Падрыхтоўка да кантрольнай",
+      lit_literacy: "Чытацкая граматнасць", math_literacy: "Матэматычная граматнасць",
+      sci_literacy: "Прыродазнаўчая граматнасць", fin_literacy: "Фінансавая граматнасць"
+    };
+
+    const taskTypesRU = {
+      multiple_choice: "Множественный выбор", short_answer: "Краткий ответ",
+      open_ended: "Открытый ответ", matching: "Сопоставление",
+      fill_blanks: "Заполнение пропусков", true_false: "Верно/неверно",
+      fill_table: "Заполнение таблицы", mini_case: "Мини-кейс",
+      drawing: "Рисунок или схема", creative_task: "Творческое задание",
+      coloring: "Раскрась (ч/б контур)"
+    };
+    const taskTypesBE = {
+      multiple_choice: "Множны выбар", short_answer: "Кароткі адказ",
+      open_ended: "Адкрыты адказ", matching: "Супастаўленне",
+      fill_blanks: "Запаўненне прабелаў", true_false: "Верна/няверна",
+      fill_table: "Запаўненне табліцы", mini_case: "Міні-кейс",
+      drawing: "Малюнак або схема", creative_task: "Творчае заданне",
+      coloring: "Размалюй (ч/б контур)"
+    };
+
+    const taskDescriptions = {
+      multiple_choice: "Множественный выбор — вопрос с 3-4 вариантами ответа, один правильный.",
+      short_answer: "Краткий ответ — вопрос, на который нужно ответить 1-2 словами.",
+      open_ended: "Открытый ответ — развёрнутый ответ с обоснованием.",
+      matching: "Сопоставление — соедини стрелками или напиши номера пар.",
+      fill_blanks: "Заполнение пропусков — текст с пропусками (пунктирные линии).",
+      true_false: "Верно/неверно — отметь кружком правильный ответ.",
+      fill_table: "Заполнение таблицы — таблица с заголовками и пустыми ячейками.",
+      mini_case: "Мини-кейс — короткая ситуация + 2-3 вопроса.",
+      drawing: "Рисунок/схема — нарисуй по теме.",
+      creative_task: "Творческое задание — придумай, сочини, оформи творчески.",
+      coloring: "Раскрась — чёрно-белый контурный рисунок + инструкция по раскраске."
+    };
+
+    const extrasRU = {
+      game_form: "игровая форма", inclusive: "инклюзивный подход",
+      real_life: "связь с жизнью", min_text: "минимум текста",
+      self_check: "самопроверка", differentiated: "разноуровневые задания",
+      reflection: "рефлексия", grading_scale: "шкала оценивания",
+      slavic_look: "славянская внешность на изображениях"
+    };
+    const extrasBE = {
+      game_form: "гульнявая форма", inclusive: "інклюзіўны падыход",
+      real_life: "сувязь з жыццём", min_text: "мінімум тэксту",
+      self_check: "самаправерка", differentiated: "рознаўзроўневыя заданні",
+      reflection: "рэфлексія", grading_scale: "шкала ацэньвання",
+      slavic_look: "славянская знешнасць на выявах"
+    };
+
+    const formatSizes = {
+      'portrait':  { w: '210mm', h: '297mm', cols: 2 },
+      'landscape': { w: '297mm', h: '210mm', cols: 3 }
+    };
+
+    function getContentLanguage(subjectKey, interfaceLang) {
+      const forcedLang = {
+        'bel_mova': 'be', 'bel_lit': 'be',
+        'rus_yaz': 'ru', 'rus_lit': 'ru',
+        'angl_yaz': 'en', 'nem_yaz': 'de', 'fr_yaz': 'fr'
+      };
+      return forcedLang[subjectKey] || interfaceLang;
+    }
+
+    function getLangName(langCode) {
+      const names = {
+        'ru': 'русском', 'be': 'белорусском',
+        'en': 'английском', 'de': 'немецком', 'fr': 'французском'
+      };
+      return names[langCode] || 'русском';
+    }
 
     function showNotification(message, type = 'success') {
       const notif = document.getElementById('notification');
@@ -673,298 +611,179 @@
       setTimeout(() => { notif.style.display = 'none'; }, 4000);
     }
 
-    function getCheckedValues(containerId, dictRU, dictBE, lang) {
+    function getCheckedValues(containerId, dict) {
       const values = [];
       document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
-        values.push(lang === 'be' ? dictBE[cb.value] : dictRU[cb.value]);
+        if (dict[cb.value]) values.push(dict[cb.value]);
       });
       return values;
     }
 
+    function getCheckedKeys(containerId) {
+      const keys = [];
+      document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
+        keys.push(cb.value);
+      });
+      return keys;
+    }
+
     function generatePrompt() {
-      const lang = document.getElementById('worksheetLanguage').value;
+      const interfaceLang = document.getElementById('worksheetLanguage').value;
       const subjectKey = document.getElementById('subject').value;
       const lessonPlan = document.getElementById('lessonPlan').value.trim();
       const grade = parseInt(document.getElementById('grade').value);
-      const selectedStyle = document.querySelector('input[name="style"]:checked')?.value || 'child';
+      const taskCount = document.getElementById('taskCount').value;
       const orientation = document.querySelector('input[name="orientation"]:checked')?.value || 'portrait';
+      const style = document.querySelector('input[name="style"]:checked')?.value || 'child';
 
       if (!lessonPlan) {
-        showNotification(lang === 'be' ? "Калі ласка, увядзіце тэкст план-канспекта!" : "Пожалуйста, введите текст план-конспекта!", 'error');
+        showNotification('Пожалуйста, введите тему!', 'error');
         return;
       }
 
-      // Определяем язык заданий
-      let taskLang = lang;
-      if (['angl_yaz', 'nem_yaz', 'fr_yaz'].includes(subjectKey)) {
-        taskLang = subjectKey === 'angl_yaz' ? 'en' : (subjectKey === 'nem_yaz' ? 'de' : 'fr');
-      }
+      const contentLang = getContentLanguage(subjectKey, interfaceLang);
+      const contentLangName = getLangName(contentLang);
+      const subjectName = interfaceLang === 'be' ? subjectsBE[subjectKey] : subjectsRU[subjectKey];
+      const fmt = formatSizes[orientation];
 
-      const goalsText = getCheckedValues('goals', goalsRU, goalsBE, lang);
-      const taskTypesText = getCheckedValues('taskTypes', taskTypesRU, taskTypesBE, lang);
-      const extrasText = getCheckedValues('extras', extrasRU, extrasBE, lang);
-      const autoSelectTasks = taskTypesText.length === 0;
+      const goals = getCheckedValues('goals', interfaceLang === 'be' ? goalsBE : goalsRU);
+      const taskTypesKeys = getCheckedKeys('taskTypes');
+      const taskTypes = getCheckedValues('taskTypes', interfaceLang === 'be' ? taskTypesBE : taskTypesRU);
+      const extras = getCheckedValues('extras', interfaceLang === 'be' ? extrasBE : extrasRU);
 
-      // Добавляем пользовательские значения из полей "Другое"
       const otherGoal = document.getElementById('otherGoal').value.trim();
-      const otherTaskType = document.getElementById('otherTaskType').value.trim();
+      const otherTask = document.getElementById('otherTaskType').value.trim();
       const otherExtra = document.getElementById('otherExtra').value.trim();
-      
-      if (otherGoal) goalsText.push(otherGoal);
-      if (otherTaskType) taskTypesText.push(otherTaskType);
-      if (otherExtra) extrasText.push(otherExtra);
+      if (otherGoal) goals.push(otherGoal);
+      if (otherTask) taskTypes.push(otherTask);
+      if (otherExtra) extras.push(otherExtra);
 
-      const subjectName = lang === 'be' ? subjectsBE[subjectKey] : subjectsRU[subjectKey];
-
-      // Размеры А4 и количество колонок
-      const pageWidth = orientation === 'landscape' ? '297mm' : '210mm';
-      const pageHeight = orientation === 'landscape' ? '210mm' : '297mm';
-      const orientationName = orientation === 'landscape' ? 'landscape' : 'portrait';
-      const numColumns = orientation === 'landscape' ? 3 : 2;
-
-      let intro = lang === 'be'
-        ? `Ты — настаўнік-метадыст Рэспублікі Беларусь і таленавіты вэб-дызайнер па прадмеце "${subjectName}".`
-        : `Ты — учитель-методист Республики Беларусь и талантливый веб-дизайнер по предмету "${subjectName}".`;
-
-      const languageInstruction = lang === 'be' ? "Ствары на беларускай мове." : "Создай на русском языке.";
-
-      let prompt = `${intro} ${languageInstruction}\n`;
-      prompt += lang === 'be'
-        ? `Ствары гатовую HTML-старонку рабочага ліста для вучняў ${grade} класа на аснове наступнага фрагмента ўрока:\n«${lessonPlan}»\n\n`
-        : `Создай готовую HTML-страницу рабочего листа для учащихся ${grade} класса на основе следующего фрагмента урока:\n«${lessonPlan}»\n\n`;
-
-      if (goalsText.length > 0) {
-        prompt += lang === 'be' ? `Мэта: ${goalsText.join(', ')}.\n` : `Цель: ${goalsText.join(', ')}.\n`;
-      }
-
-      prompt += lang === 'be' ? "Патрабаванні:\n" : "Требования:\n";
-
-      // === ЯЗЫК КОНТЕНТА (С УЧЕТОМ ИНОСТРАННЫХ ЯЗЫКОВ) ===
-      if (['angl_yaz', 'nem_yaz', 'fr_yaz'].includes(subjectKey)) {
-         const langName = subjectKey === 'angl_yaz' ? 'английском' : (subjectKey === 'nem_yaz' ? 'немецком' : 'французском');
-         prompt += `– **ЯЗЫК КОНТЕНТА**: Так как предмет — иностранный язык, ВСЕ задания, инструкции и тексты должны быть СТРОГО на ${langName} языке. Интерфейсные элементы (Класс, Дата, Имя) могут оставаться на русском/белорусском для удобства учителя.\n`;
-      } else {
-        prompt += lang === 'be'
-          ? `– **МОВА КАНТЭНТУ**: Увесь тэкст рабочага ліста (заданні, інструкцыі, загаловак) — СТРОГА на беларускай мове.\n`
-          : `– **ЯЗЫК КОНТЕНТА**: Весь текст рабочего листа (задания, инструкции, заголовок) — СТРОГО на русском языке.\n`;
-      }
-
-      // === КОМПАКТНОСТЬ — ГЛАВНЫЙ ПРИОРИТЕТ ===
-      prompt += lang === 'be'
-        ? `– **КАМПАКТНАСЦЬ**: Запаўняй УСЮ старонку шчыльна, БЕЗ пустых месцаў! Мінімальныя адступы паміж заданнямі (5-8px). НЯМА вялікіх прабелаў!\n`
-        : `– **КОМПАКТНОСТЬ**: Заполняй ВСЮ страницу плотно, БЕЗ пустых мест! Минимальные отступы между заданиями (5-8px). НЕТ больших пробелов!\n`;
-
-      // === ОБЩИЙ ФОН ===
-      prompt += lang === 'be'
-        ? `– **Агульны фон вэб-старонкі**: яркі, градыентны ў стылі Піксар з вялікімі каляровымі эмодзі па тэме. Эмодзі — НЕ паўпразрачныя.\n`
-        : `– **Общий фон веб-страницы**: яркий, градиентный в стиле Пиксар с крупными цветными эмодзи по теме. Эмодзи — НЕ полупрозрачные.\n`;
-
-      // === ФОН РАБОЧЕГО ЛИСТА ===
-      prompt += lang === 'be'
-        ? `– **Фон рабочага ліста**: пастэльныя далікатныя колеры (светла-ружовы, блакітны, жоўты, зялёны) з невялікімі ўзорамі.\n`
-        : `– **Фон рабочего листа**: пастельные нежные цвета (светло-розовый, голубой, жёлтый, зелёный) с небольшими узорами.\n`;
-
-      // === КОНТУР ===
-      prompt += lang === 'be'
-        ? `– **Увесь рабочы ліст**: яркі каляровы контур (таўшчыня 5-10px) з градыентам.\n`
-        : `– **Весь рабочий лист**: яркий цветной контур (толщина 5-10px) с градиентом.\n`;
-
-      // === ШАПКА — КОМПАКТНАЯ ===
-      prompt += lang === 'be'
-        ? `– **Шапка**: КАМПАКТНАЯ! Тэма (14pt, тлусты), радок: Клас ___ | Дата __________ | Прозвішча, імя ________________ (11pt). Адступ пасля шапкі — 8px.\n`
-        : `– **Шапка**: КОМПАКТНАЯ! Тема (14pt, жирный), строка: Класс ___ | Дата __________ | Фамилия, имя ________________ (11pt). Отступ после шапки — 8px.\n`;
-
-      // === ЗАДАНИЯ В РАМКАХ — КОМПАКТНЫЕ ===
-      prompt += lang === 'be'
-        ? `– **Кожнае заданне**: у сваёй унікальнай каляровай рамцы з эмодзі па тэме. Padding унутры рамкі — 8px. Margin паміж рамкамі — 8px.\n`
-        : `– **Каждое задание**: в своей уникальной цветной рамке с эмодзи по теме. Padding внутри рамки — 8px. Margin между рамками — 8px.\n`;
-
-      // === ВИЗУАЛИЗАЦИЯ А4 НА ЭКРАНЕ (WYSIWYG) ===
-      prompt += lang === 'be'
-        ? `– **ВІЗУАЛІЗАЦЫЯ НА ЭКРАНЕ (ЯК У WORD/PDF)**: Каб карыстальнік адразу бачыў гатовыя лісты:\n  1. Ствары асобныя блокі <div class="a4-page"> для кожнай старонкі.\n  2. Кожны .a4-page павінен мець: width: ${pageWidth}; min-height: ${pageHeight}; background: white; margin: 20px auto; padding: 10mm; box-shadow: 0 0 15px rgba(0,0,0,0.2); border: 1px solid #ddd;\n  3. Гэта створыць эфект рэальных папяровых лістоў, якія ляжаць на стале. Пры друку (@media print) гэтыя цені і маргіны павінны знікаць!\n`
-        : `– **ВИЗУАЛИЗАЦИЯ НА ЭКРАНЕ (КАК В WORD/PDF)**: Чтобы пользователь сразу видел готовые листы:\n  1. Создай отдельные блоки <div class="a4-page"> для каждой страницы.\n  2. Каждый .a4-page должен иметь: width: ${pageWidth}; min-height: ${pageHeight}; background: white; margin: 20px auto; padding: 10mm; box-shadow: 0 0 15px rgba(0,0,0,0.2); border: 1px solid #ddd;\n  3. Это создаст эффект реальных бумажных листов, лежащих на столе. При печати (@media print) эти тени и отступы должны исчезать!\n`;
-
-      // === КОЛИЧЕСТВО КОЛОНОК В ЗАВИСИМОСТИ ОТ ОРИЕНТАЦИИ ===
-      prompt += lang === 'be'
-        ? `– **Размяшчаць заданні ў ${numColumns} калонкі** (CSS columns: ${numColumns}) УНУТРЫ кожнага .a4-page. Калі не змяшчаецца — стварай новы <div class="a4-page">.\n`
-        : `– **Размещать задания в ${numColumns} колонки** (CSS columns: ${numColumns}) ВНУТРИ каждого .a4-page. Если не помещается — создавай новый <div class="a4-page">.\n`;
-
-      // === ЖЕСТКИЕ РАЗМЕРЫ ДЛЯ ПЕЧАТИ (СИНХРОНИЗАЦИЯ) ===
-      prompt += lang === 'be'
-        ? `– **КРЫТЫЧНА ВАЖНА ДЛЯ ДРУКУ (PDF)**: Каб пазбегнуць абрэзкі і захавать візуальны выгляд:\n  1. @page { size: ${pageWidth} ${pageHeight}; margin: 0; }\n  2. @media print { .a4-page { margin: 0; box-shadow: none; border: none; page-break-after: always; width: 100%; height: 100%; } }\n  3. Памеры ў HTML (.a4-page) і ў CSS (@page) павінны быць ІДЭНТЫЧНЫМИ!\n`
-        : `– **КРИТИЧЕСКИ ВАЖНО ДЛЯ ПЕЧАТИ (PDF)**: Чтобы избежать обрезки и сохранить визуальный вид:\n  1. @page { size: ${pageWidth} ${pageHeight}; margin: 0; }\n  2. @media print { .a4-page { margin: 0; box-shadow: none; border: none; page-break-after: always; width: 100%; height: 100%; } }\n  3. Размеры в HTML (.a4-page) и в CSS (@page) должны быть ИДЕНТИЧНЫМИ!\n`;
-
-      // === ПЕЧАТЬ С ФОНАМИ ===
-      prompt += lang === 'be'
-        ? `– **Для друку**: дадай CSS @media print { * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } } для захавання каляровых фонаў.\n`
-        : `– **Для печати**: добавь CSS @media print { * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } } для сохранения цветных фонов.\n`;
-
-      // === ЦВЕТ ТЕКСТА ===
-      prompt += lang === 'be'
-        ? `– **Колер тэксту заданняў**: СТРОГА чорны (#000000) для максімальнай чытэльнасці. Іншыя колеры — ТОЛЬКІ для выдзялення ключавых слоў.\n`
-        : `– **Цвет текста заданий**: СТРОГО чёрный (#000000) для максимальной читаемости. Другие цвета — ТОЛЬКО для выделения ключевых слов.\n`;
-
-      // === ИНСТРУКЦИИ — КОМПАКТНЫЕ ===
-      prompt += lang === 'be'
-        ? `– **Інструкцыі**: тлустым шрыфтам 11pt, з малымі адступамі (margin: 3px 0).\n`
-        : `– **Инструкции**: жирным шрифтом 11pt, с малыми отступами (margin: 3px 0).\n`;
-
-      // === ИЗОБРАЖЕНИЯ — БЕЗ ОБРЕЗКИ ===
-      prompt += lang === 'be'
-        ? `– **ВЫЯВЫ**: УСЕ выявы павінны быць цалкам бачныя, БЕЗ АБРЭЗКІ! Максімальная шырыня выявы: 90% шырыні калонкі. Выкарыстоўвай CSS: img { max-width: 100%; height: auto; object-fit: contain; display: block; margin: 8px auto; }\n`
-        : `– **ИЗОБРАЖЕНИЯ**: ВСЕ изображения должны быть полностью видны, БЕЗ ОБРЕЗКИ! Максимальная ширина изображения: 90% ширины колонки. Используй CSS: img { max-width: 100%; height: auto; object-fit: contain; display: block; margin: 8px auto; }\n`;
-
-      // === ИЗОБРАЖЕНИЯ — НАДПИСИ ===
-      prompt += lang === 'be'
-        ? `– **НАДПІСЫ НА ВЫЯВАХ**: Калі на выявах ёсць тэкст — ТОЛЬКІ ЗАГАЛОЎНЫМІ ЛІТАРАМІ! ТОЛЬКІ на мове ўрока. Лепш за ўсё — БЕЗ НАДПІСАЎ на выявах, калі гэта магчыма.\n`
-        : `– **НАДПИСИ НА ИЗОБРАЖЕНИЯХ**: Если на изображениях есть текст — ТОЛЬКО ЗАГЛАВНЫМИ БУКВАМИ! ТОЛЬКО на языке урока. Лучше всего — БЕЗ НАДПИСЕЙ на изображениях, если это возможно.\n`;
-
-      // === ТОЧНОСТЬ ФОРМУЛИРОВОК ===
-      prompt += lang === 'be'
-        ? `– **Фармулёўкі заданняў**: дакладна адпавядаюць выкананню. Калі "ўставіць" — пішы "Уставіць", калі "абвесці" — гэта слова ўжо ў фразе. **Ніякіх расхаджэнняў!**\n`
-        : `– **Формулировки заданий**: точно соответствуют выполнению. Если "вставить" — пиши "Вставь", если "обвести" — это слово уже в фразе. **Никаких расхождений!**\n`;
-
-      // === ВЕРНО/НЕВЕРНО — КОМПАКТНО ===
-      prompt += lang === 'be'
-        ? `– **Для "Верна/няверна"**: кожнае сцвярджэнне на асобным радку, справа: (○) Верна  (○) Няверна. Шрыфт 11pt.\n`
-        : `– **Для "Верно/неверно"**: каждое утверждение на отдельной строке, справа: (○) Верно  (○) Неверно. Шрифт 11pt.\n`;
-
-      // === ЗАПОЛНЕНИЕ ПРОПУСКОВ — КОМПАКТНО ===
-      prompt += lang === 'be'
-        ? `– **Для "Запаўненне пропускаў"**: кожнае пустое месца — пункцірная лінія даўжынёй 3-4 см (не 5!), перад ёй нумар (1., 2., 3.). Радок з пропускам — 18-20px вышынёй.\n`
-        : `– **Для "Заполнение пропусков"**: каждое пустое место — пунктирная линия длиной 3-4 см (не 5!), перед ней номер (1., 2., 3.). Строка с пропуском — 18-20px высотой.\n`;
-
-      // === ТАБЛИЦЫ — КОМПАКТНЫЕ ===
-      prompt += lang === 'be'
-        ? `– **Для "Запаўненне табліцы"**: табліца з загалоўкамі, пустыя ячэйкі (мін. 3-5), інструкцыя: «Запоўні, выкарыстоўваючы тэкст». Padding ячэйкі — 4px, шрыфт 11pt.\n`
-        : `– **Для "Заполнение таблицы"**: таблица с заголовками, пустые ячейки (мин. 3-5), инструкция: «Заполни, используя текст». Padding ячейки — 4px, шрифт 11pt.\n`;
-
-      // === ПОЛЯ ДЛЯ ОТВЕТОВ — КОМПАКТНЫЕ ===
-      prompt += lang === 'be'
-        ? `– **Палі для адказаў**: пустыя радкі з пунктирам вышынёй 20-25px (не 30!), квадрацікі для галачак 12×12px, месца для схемы (мін. 4 см у вышыню).\n`
-        : `– **Поля для ответов**: пустые строки с пунктиром высотой 20-25px (не 30!), квадратики для галочек 12×12px, место для схемы (мин. 4 см в высоту).\n`;
-
-      // === БЕЛАРУСЬ ===
-      prompt += lang === 'be'
-        ? `– **Факты пра Беларусь**: ТОЛЬКІ дакладныя, правераныя.\n`
-        : `– **Факты о Беларуси**: ТОЛЬКО точные, проверенные.\n`;
-
-      // === ШРИФТЫ И ПОЛЯ — КОМПАКТНЫЕ ===
-      prompt += lang === 'be'
-        ? `– **Шрыфт**: заданні 11pt, інструкцыі 11pt, тэкст 12pt. Палі ≥8mm. Шчыльная вёрстка без лішняга месца!\n`
-        : `– **Шрифт**: задания 11pt, инструкции 11pt, текст 12pt. Поля ≥8mm. Плотная вёрстка без лишнего места!\n`;
-
-      // === ПОДПИСЬ АВТОРА — КОМПАКТНАЯ ===
-      prompt += lang === 'be'
-        ? `– **Подпіс аўтара**: "© Ірына Гаеўская, настаўнік пачатковых класаў, Рэспубліка Беларусь" — маленькім шрыфтам 9pt УНІЗЕ кожнай старонкі (.a4-page), padding 3px.\n`
-        : `– **Подпись автора**: "© Ирина Гаевская, учитель начальных классов, Республика Беларусь" — маленьким шрифтом 9pt ВНИЗУ каждой страницы (.a4-page), padding 3px.\n`;
-
-      // === РЕФЛЕКСИЯ — КОМПАКТНАЯ ===
-      prompt += lang === 'be'
-        ? `– **Рэфлексія ў канцы**: КАМПАКТНАЯ! "Што новага я даведаўся?" (2 радкі), "Намалюй смайлік настрою" (поле 3×3 см). Агульная вышыня — 4-5 см.\n`
-        : `– **Рефлексия в конце**: КОМПАКТНАЯ! "Что нового я узнал?" (2 строки), "Нарисуй смайлик настроения" (поле 3×3 см). Общая высота — 4-5 см.\n`;
-
-      // === ОПТИМИЗАЦИЯ ПРОСТРАНСТВА ===
-      prompt += lang === 'be'
-        ? `– **АПТЫМІЗАЦЫЯ ПРАСТОРЫ**: Выкарыстоўвай line-height: 1.3 (не 1.6!). Margin паміж элементамі: 5-8px (не 15-20px!). Padding унутры блокаў: 6-8px (не 15px!).\n`
-        : `– **ОПТИМИЗАЦИЯ ПРОСТРАНСТВА**: Используй line-height: 1.3 (не 1.6!). Margin между элементами: 5-8px (не 15-20px!). Padding внутри блоков: 6-8px (не 15px!).\n`;
-
-      // === БЕЗ ЛИШНИХ ОТСТУПОВ ===
-      prompt += lang === 'be'
-        ? `– **БЕЗ ЛІШНІХ АДСТУПАЎ**: Няма пустых радкоў паміж заданнямі! Заданні ідуць шчыльна адно за адным. Выкарыстоўвай CSS: .task { margin-bottom: 8px; }.\n`
-        : `– **БЕЗ ЛИШНИХ ОТСТУПОВ**: Нет пустых строк между заданиями! Задания идут плотно одно за другим. Используй CSS: .task { margin-bottom: 8px; }.\n`;
-
-      // === ЗАПОЛНЕНИЕ ПУСТОТЫ (НОВОЕ) ===
-      prompt += lang === 'be'
-        ? `– **ЗАПОЎНІ ПУСТАТУ**: Калі заданні заканчваюцца, а месца на лісце яшчэ ёсць, дадай дэкаратыўныя элементы, карысныя парады або міні-пытанні, каб ліст выглядаў насычаным.\n`
-        : `– **ЗАПОЛНИ ПУСТОТУ**: Если задания заканчиваются, а место на листе еще есть, добавь декоративные элементы, полезные советы или мини-вопросы, чтобы лист выглядел насыщенным.\n`;
-
-      // === ТИПЫ ЗАДАНИЙ ===
-      if (autoSelectTasks) {
-        prompt += lang === 'be'
-          ? `– **Тыпы заданняў**: ІІ сам падбярэ аптымальныя тыпы для гэтай тэмы (запаўненне прапускаў, множны выбар, сапастаўленне, верна/няверна, табліцы, міні-кейс і інш.).\n`
-          : `– **Типы заданий**: ИИ сам подберёт оптимальные типы для этой темы (заполнение пропусков, множественный выбор, сопоставление, верно/неверно, таблицы, мини-кейс и др.).\n`;
-      } else {
-        prompt += lang === 'be'
-          ? `– **Тыпы заданняў для ўключэння**: ${taskTypesText.join(', ')}. **ВЫКАРЫСТОВАЙ ТОЛЬКІ ГЭТЫЯ ТЫПЫ!** Кожны тып — адным заданнем.\n`
-          : `– **Типы заданий для включения**: ${taskTypesText.join(', ')}. **ИСПОЛЬЗУЙ ТОЛЬКО ЭТИ ТИПЫ!** Каждый тип — одним заданием.\n`;
-      }
-
-      // === ДОПОЛНИТЕЛЬНЫЕ ПОЖЕЛАНИЯ ===
-      if (extrasText.length > 0) {
-        prompt += lang === 'be' ? `– Улічвай: ${extrasText.join(', ')};\n` : `– Учитывай: ${extrasText.join(', ')};\n`;
-      }
-
-      // === ШКАЛА ОЦЕНИВАНИЯ ===
       const hasGradingScale = document.querySelector('input[value="grading_scale"]').checked;
-      if (hasGradingScale) {
-        prompt += lang === 'be'
-          ? `– **ШКАЛА АЦЭНЬВАННЯ**: Дадай у канцы апошняга ліста кампактны блок "Мае балы": ______ / ______. Крытэрыі: "Выдатна" (9-10 балаў), "Добра" (7-8), "Здавальняюча" (5-6).\n`
-          : `– **ШКАЛА ОЦЕНИВАНИЯ**: Добавь в конце последнего листа компактный блок "Мои баллы": ______ / ______. Критерии: "Отлично" (9-10 баллов), "Хорошо" (7-8), "Удовлетворительно" (5-6).\n`;
-      }
-
-      // === ГЕНЕРАЦИЯ ИЗОБРАЖЕНИЙ ===
-      prompt += lang === 'be'
-        ? `– **ГЕНЕРАЦЫЯ ВЫЯ**: Згенеруй 5-10 рэальных тэматычных выяў (base64 або URL), убудуй у HTML. Усе выявы павінны быць цалкам бачныя, без абрэзкі! НЕ выкарыстоўвай placeholder'ы!\n`
-        : `– **ГЕНЕРАЦИЯ ИЗОБРАЖЕНИЙ**: Сгенерируй 5-10 реальных тематических изображений (base64 или URL), встрой в HTML. Все изображения должны быть полностью видны, без обрезки! НЕ используй placeholder'ы!\n`;
-
-      // === СЛАВЯНСКАЯ ВНЕШНОСТЬ (ПРОВЕРКА ЧЕКБОКСА) ===
       const hasSlavicLook = document.querySelector('input[value="slavic_look"]').checked;
-      if (hasSlavicLook) {
-        prompt += lang === 'be'
-          ? `– **КРЫТЫЧНА: Калі на выявах ёсць людзі/дзеці — ТОЛЬКІ СЛАВЯНСКАЙ ЗНЕШНАСЦІ** (светлая скура, светлыя/русыя валасы, блакітныя/шэрыя вочы). НЕ афрыканцы, НЕ азіяты!\n`
-          : `– **КРИТИЧЕСКИ: Если на изображениях есть люди/дети — ТОЛЬКО СЛАВЯНСКОЙ ВНЕШНОСТИ** (светлая кожа, светлые/русые волосы, голубые/серые глаза). НЕ африканцы, НЕ азиаты!\n`;
-      } else {
-        prompt += lang === 'be'
-          ? `– **ЗНЕШНАСЦЬ ЛЮДЗЕЙ**: Дазволена розная этнічная прыналежнасць (адпаведна тэме ўрока, напр., для англійскай мовы).\n`
-          : `– **ВНЕШНОСТЬ ЛЮДЕЙ**: Разрешена разная этническая принадлежность (соответственно теме урока, напр., для английского языка).\n`;
+      const hasReflection = document.querySelector('input[value="reflection"]').checked;
+
+      let taskDescriptionsText = '';
+      if (taskTypesKeys.length > 0) {
+        taskDescriptionsText = 'Используй ТОЛЬКО эти типы:\n';
+        taskTypesKeys.forEach(key => {
+          if (taskDescriptions[key]) {
+            taskDescriptionsText += `  • ${taskDescriptions[key]}\n`;
+          }
+        });
       }
 
-      // === КАЧЕСТВО ИЗОБРАЖЕНИЙ ===
-      prompt += lang === 'be'
-        ? `– **Якасць выяў**: якасныя, тэматычна дакладныя, з пэўнымі дэталямі.\n`
-        : `– **Качество изображений**: качественные, тематически точные, с чёткими деталями.\n`;
+      let prompt = `Ты — учитель-методист Республики Беларусь и талантливый веб-дизайнер.
+Создай рабочий лист А4 по предмету "${subjectName}" для ${grade} класса.
 
-      // === БЕЗ ГОТОВЫХ ОТВЕТОВ ===
-      prompt += lang === 'be'
-        ? `– **Без гатовых адказаў**: толькі пустыя месцы для запаўнення.\n`
-        : `– **Без готовых ответов**: только пустые места для заполнения.\n`;
+=== ПАРАМЕТРЫ ===
+• Тема: ${lessonPlan}
+• Язык контента: ${contentLangName}
+• Количество заданий: СТРОГО ${taskCount} заданий
+• Формат: A4 ${orientation === 'portrait' ? 'вертикальный' : 'горизонтальный'}
+• Стиль: ${style === 'child' ? 'детский (яркий, с эмодзи)' : 'академический'}
+${goals.length > 0 ? `• Цели: ${goals.join(', ')}` : ''}
+${extras.length > 0 ? `• Особенности: ${extras.join(', ')}` : ''}
 
-      // === HTML + CSS, БЕЗ JS ===
-      prompt += lang === 'be'
-        ? `– **Код**: адзіны HTML-файл, сумяшчальны з Word, толькі HTML+CSS, БЕЗ JavaScript.\n`
-        : `– **Код**: единый HTML-файл, совместимый с Word, только HTML+CSS, БЕЗ JavaScript.\n`;
+=== 1. ЯЗЫК КОНТЕНТА ===
+– Весь текст рабочего листа — СТРОГО на ${contentLangName} языке.
+– Формулировки точно соответствуют действию: «вставить» → «Вставь», «обвести» → "Обведи" и т.д..
+– Факты о Беларуси — ТОЛЬКО точные, проверенные, соответствуют правде. 
 
-      // === НЕ ОБЪЯСНЯТЬ ===
-      prompt += lang === 'be' ? `– НЕ ТЛУМАЧ — адразу выдай толькі код.` : `– НЕ ОБЪЯСНЯЙ — сразу выдай только код.`;
+=== 2. СТРУКТУРА HTML ===
+– Создай <div class="a4-page"> с РОВНЫМИ размерами А4: width: ${fmt.w}; height: ${fmt.h}; max-height: ${fmt.h}; overflow: hidden;
+– ВСЁ содержимое должно поместиться ВНУТРИ этих размеров!
+– Если не помещается — УМЕНЬШАЙ шрифт, отступы, размеры изображений, но НЕ ВЫХОДИ за пределы ${fmt.h} по высоте и ширине!
+– Внутри ${fmt.cols} колонки (CSS columns: ${fmt.cols}).
+– Яркий цветной контур вокруг всего листа (5-10px, градиент).
+– Шапка: Тема (14pt, жирный) + строка «Класс ___ | Дата __________ | Фамилия, имя _______________» (10pt).
 
-      // === ПРОВЕРКА ПЕРЕД ГЕНЕРАЦИЕЙ ===
-      prompt += `\n\n=== ✅ ПРОВЕРКА ПЕРЕД ГЕНЕРАЦИЕЙ ===
-Прежде чем генерировать код, ПРОВЕРЬ:
-1. ✓ ВИЗУАЛИЗАЦИЯ: Использованы блоки .a4-page с width: ${pageWidth}, min-height: ${pageHeight}, box-shadow и margin: 20px auto?
-2. ✓ СИНХРОНИЗАЦИЯ: Размеры в CSS @page (${pageWidth} ${pageHeight}) идентичны размерам .a4-page?
-3. ✓ КОМПАКТНОСТЬ: margin 5-8px, padding 6-8px, line-height 1.3?
-4. ✓ КОЛОНКИ: ${numColumns} ${orientation === 'landscape' ? 'колонки (альбомная)' : 'колонки (портретная)'} внутри .a4-page?
-5. ✓ ИЗОБРАЖЕНИЯ: max-width: 100%, height: auto, object-fit: contain (БЕЗ ОБРЕЗКИ)?
-6. ✓ Надписи на изображениях: ТОЛЬКО ЗАГЛАВНЫМИ БУКВАМИ, только на языке урока (или БЕЗ надписей)?
-7. ✓ Текст заданий — СТРОГО чёрный (#000000)?
-8. ✓ Внешность людей: ${hasSlavicLook ? 'ТОЛЬКО славянская' : 'Соответствует теме урока'}?
-9. ✓ CSS для печати (.a4-page { margin: 0; box-shadow: none; }) добавлен?
-10. ✓ Если не помещается — новый .a4-page, НЕ обрезка?
-11. ✓ Подпись автора — внизу каждого .a4-page (9pt)?
-12. ✓ Только выбранные типы заданий (или автоподбор)?
-13. ✓ ПУСТОТА ЗАПОЛНЕНА: Нет больших пустых пространств? ВСЁ заполнено плотно?
-14. ✓ ${hasGradingScale ? 'Добавлена шкала оценивания?' : 'Шкала оценивания не требуется?'}
-15. ✓ Язык заданий: ${['angl_yaz', 'nem_yaz', 'fr_yaz'].includes(subjectKey) ? 'СТРОГО иностранный язык' : (lang === 'be' ? 'Белорусский' : 'Русский')}?
+=== 3. ЗАДАНИЯ ===
+– Каждое задание — в цветной рамке с эмодзи.
+– Padding внутри рамки: 6px, margin между рамками: 6px.
+– Размер шрифта заданий: СТРОГО 10pt.
+– Line-height: 1.2, margin между элементами: 5-8px.
+– Цвет текста: СТРОГО чёрный (#000000).
+– Инструкции — жирным шрифтом.
+${taskDescriptionsText}
 
-Если хотя бы один пункт НЕ выполнен — ИСПРАВЬ перед генерацией!`;
+=== 4. ИЗОБРАЖЕНИЯ — КРИТИЧЕСКИ ВАЖНО ===
+❌ ЗАПРЕЩЕНО:
+  • Геометрические фигуры (треугольники, круги, палочки)
+  • Схематичные рисунки без детализации
+  • Пиктограммы и иконки
+  
+✅ ТРЕБУЕТСЯ:
+  • Реалистичные фотографии или детализированные иллюстрации
+  • Качественные изображения в стиле Pixar
+  • Чёткие детали, естественные цвета
+  
+– Размер изображений: высота СТРОГО 40mm, ширина — по ширине рамки задания.
+– CSS: img { max-width: 100%; height: auto; object-fit: contain; display: block; margin: 4px auto; }
+– Надписи на изображениях: ТОЛЬКО ЗАГЛАВНЫМИ буквами и только на ${contentLangName} языке (или лучше БЕЗ надписей).
+– Подписи под изображениями: курсив, 8pt.
+${hasSlavicLook ? '– Люди на изображениях: ТОЛЬКО славянской внешности (светлая кожа, светлые/русые волосы).' : ''}
+– 3-5 тематических изображений (base64 или URL).
+
+=== 5. ФОРМАТЫ ОТВЕТОВ ===
+– Пунктирные линии для заполнения: длина 3-4 см, высота строки 18px.
+– Таблицы: <table> с border/padding, пустые ячейки (3-5 шт).
+– Поля для ответов: пунктирные строки высотой 20-25px.
+– Квадратики для галочек: 12×12px.
+
+=== 6. ПЕЧАТЬ — КРИТИЧЕСКИ ВАЖНО ===
+– @page { size: ${fmt.w} ${fmt.h}; margin: 0; }
+– @media print {
+    html, body { 
+      width: 100% !important; 
+      margin: 0 !important; 
+      text-align: center !important;
+    }
+    .a4-page { 
+      display: inline-block !important;
+      width: ${fmt.w} !important; 
+      height: ${fmt.h} !important;
+      max-height: ${fmt.h} !important;
+      overflow: hidden !important;
+      margin: 0 auto !important; 
+      padding: 5mm !important;
+      text-align: left !important;
+      page-break-after: always !important;
+    }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+– ЦЕНТРИРОВАНИЕ: display:inline-block + text-align:center (НЕ position:absolute!).
+– СТРОГО ОДИН ЛИСТ А4 — весь контент должен поместиться на один лист!
+– Размеры .a4-page и @page — ИДЕНТИЧНЫ (${fmt.w} × ${fmt.h}).
+
+=== 7. ДОПОЛНИТЕЛЬНО ===
+${hasReflection ? `– Рефлексия в конце: «Что нового я узнал?» (2 строки) + «Нарисуй смайлик» (поле 2×2 см).` : ''}
+${hasGradingScale ? `– Шкала оценивания: «Мои баллы: _____» + «Молодец! ⭐⭐⭐» | «Хорошо! ⭐⭐» | «Старайся! ⭐»` : ''}
+– Подпись автора внизу: «© Ирина Гаевская, учитель начальных классов, Республика Беларусь» (9pt).
+– Заполни пустоту: если осталось место — добавь декор, советы, мини-вопросы.
+
+=== 8. ТЕХНИЧЕСКИЕ ТРЕБОВАНИЯ ===
+– Единый HTML-файл, только HTML+CSS, БЕЗ JavaScript.
+– НЕ ОБЪЯСНЯЙ — сразу выдай только код.
+
+=== ✅ ПРОВЕРКА ПЕРЕД ГЕНЕРАЦИЕЙ ===
+1. ✓ Язык контента — ${contentLangName}
+2. ✓ Размер шрифта заданий — 10pt
+3. ✓ Размер изображений — высота 40mm, ширина по рамке
+4. ✓ СТРОГО ОДИН лист А4 (${fmt.w} × ${fmt.h}) — НЕ растягивать!
+5. ✓ height и max-height у .a4-page равны ${fmt.h}, overflow: hidden
+6. ✓ Реалистичные изображения (НЕ геометрия!)
+7. ✓ Центрирование при печати (inline-block, НЕ absolute)
+8. ✓ Все задания помещаются без обрезки
+${hasSlavicLook ? '9. ✓ Люди — славянской внешности' : ''}
+
+Если что-то не так — ИСПРАВЬ перед выдачей кода!`;
 
       document.getElementById('promptOutput').textContent = prompt;
       document.getElementById('copyBtn').disabled = false;
       document.getElementById('openQwenBtn').disabled = false;
       document.getElementById('downloadBtn').disabled = false;
       
-      showNotification(lang === 'be' ? "✅ Промпт згенераваны!" : "✅ Промпт сгенерирован!");
+      showNotification('✅ Промпт сгенерирован!');
     }
 
     function copyPrompt() {
@@ -972,21 +791,21 @@
       if (!text) { showNotification("Сначала сгенерируйте промпт!", 'error'); return; }
       navigator.clipboard.writeText(text).then(() => {
         showNotification("✅ Промпт скопирован!");
-      }).catch(() => { showNotification(" Не удалось скопировать", 'error'); });
+      }).catch(() => { showNotification("❌ Не удалось скопировать", 'error'); });
     }
 
     function downloadAsHTML() {
       const htmlContent = document.getElementById('htmlOutput').textContent;
       if (!htmlContent || htmlContent.trim() === '') {
-        showNotification("️ Сначала получите HTML от Qwen и вставьте ниже", 'error');
+        showNotification("⚠️ Сначала получите HTML от Qwen", 'error');
         const existingField = document.getElementById('htmlInputField');
         if (existingField) { existingField.scrollIntoView({ behavior: 'smooth' }); return; }
         const div = document.createElement('div');
         div.id = 'htmlInputField';
         div.style.cssText = 'margin-top: 20px; padding: 20px; background: #f0f9ff; border-radius: 12px; border: 3px solid #4a90e2;';
-        div.innerHTML = `<label style="font-weight: bold; color: #2a5c82; margin-bottom: 10px; display: block;">📄 Вставьте HTML-код от Qwen:</label>
+        div.innerHTML = `<label style="font-weight: bold; color: #2a5c82; margin-bottom: 10px; display: block;">📄 Вставьте HTML-код:</label>
           <textarea id="htmlCodeInput" placeholder="<html>...вставьте код...</html>" style="width: 100%; min-height: 300px; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-family: monospace; font-size: 13px;"></textarea>
-          <button onclick="saveAndDownloadHTML()" style="margin-top: 10px; padding: 12px 24px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;"> Скачать файл</button>`;
+          <button onclick="saveAndDownloadHTML()" style="margin-top: 10px; padding: 12px 24px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">💾 Скачать</button>`;
         document.querySelector('.container').appendChild(div);
         div.scrollIntoView({ behavior: 'smooth' });
         return;

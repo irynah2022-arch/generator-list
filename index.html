@@ -473,7 +473,7 @@
       <label class="checkbox-item"><input type="checkbox" value="differentiated">Разноуровневые задания</label>
       <label class="checkbox-item"><input type="checkbox" value="reflection" checked>💭 Рефлексия</label>
       <label class="checkbox-item"><input type="checkbox" value="grading_scale" checked>⭐ Шкала оценивания</label>
-      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked>Национальный калорит</label>
+      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked">Национальный калорит</label>
       <label class="checkbox-item" style="grid-column: 1 / -1;">
         Другое: <input type="text" id="otherExtra" style="margin-left: 8px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 250px;">
       </label>
@@ -663,13 +663,16 @@
       const hasReflection = document.querySelector('input[value="reflection"]').checked;
 
       let taskDescriptionsText = '';
-      if (taskTypesKeys.length > 0) {
+      if (taskTypesKeys.length > 0 || otherTask) {
         taskDescriptionsText = 'Используй ТОЛЬКО эти типы:\n';
         taskTypesKeys.forEach(key => {
           if (taskDescriptions[key]) {
             taskDescriptionsText += `  • ${taskDescriptions[key]}\n`;
           }
         });
+        if (otherTask) {
+          taskDescriptionsText += `  • ${otherTask} (пользовательский тип)\n`;
+        }
       }
 
       let prompt = `Ты — учитель-методист Республики Беларусь и талантливый веб-дизайнер.

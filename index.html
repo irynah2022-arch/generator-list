@@ -299,7 +299,7 @@
   <div class="top-bar">
     <div class="author-signature">
       <div>Ирина Гаевская,</div>
-      <div>учитель начальных классов, Беларусь 🇧🇾</div>
+      <div>учитель начальных классов, Республика Беларусь 🇧🇾</div>
     </div>
     <div class="action-buttons">
       <button style="background:#0088cc;" onclick="window.open('https://t.me/pervyy_zvonok_by', '_blank')">Телеграм</button>
@@ -387,18 +387,6 @@
       </select>
     </div>
 
-    <div class="form-group">
-      <label for="taskCount">🔢 Количество заданий:</label>
-      <select id="taskCount">
-        <option value="3">3 задания</option>
-        <option value="4">4 задания</option>
-        <option value="5">5 заданий</option>
-        <option value="6">6 заданий</option>
-        <option value="7">7 заданий</option>
-        <option value="8">8 заданий</option>
-      </select>
-    </div>
-
     <div class="settings-grid">
       <div class="setting-card">
         <h3>📐 Ориентация А4</h3>
@@ -444,7 +432,7 @@
 
     <h2>🧩 Типы заданий</h2>
     <div class="tip-box">
-      💡 Выберите типы заданий для включения в рабочий лист
+      💡 Количество заданий определяется автоматически по числу выбранных типов!
     </div>
     <div class="params-grid" id="taskTypes">
       <label class="checkbox-item"><input type="checkbox" value="multiple_choice">Множественный выбор</label>
@@ -473,7 +461,7 @@
       <label class="checkbox-item"><input type="checkbox" value="differentiated">Разноуровневые задания</label>
       <label class="checkbox-item"><input type="checkbox" value="reflection" checked>💭 Рефлексия</label>
       <label class="checkbox-item"><input type="checkbox" value="grading_scale" checked>⭐ Шкала оценивания</label>
-      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked">Национальный калорит</label>
+      <label class="checkbox-item"><input type="checkbox" value="slavic_look" checked>Национальный калорит</label>
       <label class="checkbox-item" style="grid-column: 1 / -1;">
         Другое: <input type="text" id="otherExtra" style="margin-left: 8px; padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 250px;">
       </label>
@@ -524,15 +512,21 @@
       medpodgotovka: "медыцынскай падрыхтоўцы"
     };
 
-    const goalsRU = {
-      reinforce: "Закрепление", test_prep: "Подготовка к контрольной",
-      lit_literacy: "Читательская грамотность", math_literacy: "Математическая грамотность",
-      sci_literacy: "Естественнонаучная грамотность", fin_literacy: "Финансовая грамотность"
+    const goalsDescriptionsRU = {
+      reinforce: "Закрепление изученного материала через выполнение разнообразных заданий",
+      test_prep: "Подготовка к контрольной работе с заданиями разного уровня сложности",
+      lit_literacy: "Развитие читательской грамотности: умение работать с текстом, понимать, анализировать, находить информацию",
+      math_literacy: "Развитие математической грамотности: решение практических, жизненных задач с применением математики",
+      sci_literacy: "Развитие естественнонаучной грамотности: наблюдение, анализ явлений природы, понимание научных фактов",
+      fin_literacy: "Развитие финансовой грамотности: практические жизненные ситуации, связанные с деньгами, бюджетом, покупками"
     };
-    const goalsBE = {
-      reinforce: "Замацаванне", test_prep: "Падрыхтоўка да кантрольнай",
-      lit_literacy: "Чытацкая граматнасць", math_literacy: "Матэматычная граматнасць",
-      sci_literacy: "Прыродазнаўчая граматнасць", fin_literacy: "Фінансавая граматнасць"
+    const goalsDescriptionsBE = {
+      reinforce: "Замацаванне вывучанага матэрыялу праз выкананне разнастайных заданняў",
+      test_prep: "Падрыхтоўка да кантрольнай работы з заданнямі рознага ўзроўню складанасці",
+      lit_literacy: "Развіццё чытацкай граматнасці: уменне працаваць з тэкстам, разумець, аналізаваць, знаходзіць інфармацыю",
+      math_literacy: "Развіццё матэматычнай граматнасці: рашэнне практычных, жыццёвых задач з прымяненнем матэматыкі",
+      sci_literacy: "Развіццё прыродазнаўчай граматнасці: назіранне, аналіз з'яў прыроды, разуменне навуковых фактаў",
+      fin_literacy: "Развіццё фінансавай граматнасці: практычныя жыццёвыя сітуацыі, звязаныя з грашыма, бюджэтам, пакупкамі"
     };
 
     const taskTypesRU = {
@@ -611,14 +605,6 @@
       setTimeout(() => { notif.style.display = 'none'; }, 4000);
     }
 
-    function getCheckedValues(containerId, dict) {
-      const values = [];
-      document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
-        if (dict[cb.value]) values.push(dict[cb.value]);
-      });
-      return values;
-    }
-
     function getCheckedKeys(containerId) {
       const keys = [];
       document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`).forEach(cb => {
@@ -632,7 +618,6 @@
       const subjectKey = document.getElementById('subject').value;
       const lessonPlan = document.getElementById('lessonPlan').value.trim();
       const grade = parseInt(document.getElementById('grade').value);
-      const taskCount = document.getElementById('taskCount').value;
       const orientation = document.querySelector('input[name="orientation"]:checked')?.value || 'portrait';
       const style = document.querySelector('input[name="style"]:checked')?.value || 'child';
 
@@ -646,21 +631,49 @@
       const subjectName = interfaceLang === 'be' ? subjectsBE[subjectKey] : subjectsRU[subjectKey];
       const fmt = formatSizes[orientation];
 
-      const goals = getCheckedValues('goals', interfaceLang === 'be' ? goalsBE : goalsRU);
-      const taskTypesKeys = getCheckedKeys('taskTypes');
-      const taskTypes = getCheckedValues('taskTypes', interfaceLang === 'be' ? taskTypesBE : taskTypesRU);
-      const extras = getCheckedValues('extras', interfaceLang === 'be' ? extrasBE : extrasRU);
-
+      // Цели с описаниями
+      const goalsDict = interfaceLang === 'be' ? goalsDescriptionsBE : goalsDescriptionsRU;
+      const goalsDescriptions = [];
+      document.querySelectorAll('#goals input[type="checkbox"]:checked').forEach(cb => {
+        if (goalsDict[cb.value]) goalsDescriptions.push(goalsDict[cb.value]);
+      });
       const otherGoal = document.getElementById('otherGoal').value.trim();
+      if (otherGoal) goalsDescriptions.push(otherGoal);
+
+      // Автоматический подсчёт количества заданий
+      const taskTypesKeys = getCheckedKeys('taskTypes');
       const otherTask = document.getElementById('otherTaskType').value.trim();
-      const otherExtra = document.getElementById('otherExtra').value.trim();
-      if (otherGoal) goals.push(otherGoal);
+      const totalTasks = taskTypesKeys.length + (otherTask ? 1 : 0);
+
+      const taskTypes = [];
+      const taskTypesDict = interfaceLang === 'be' ? taskTypesBE : taskTypesRU;
+      taskTypesKeys.forEach(key => {
+        if (taskTypesDict[key]) taskTypes.push(taskTypesDict[key]);
+      });
       if (otherTask) taskTypes.push(otherTask);
+
+      const extrasDict = interfaceLang === 'be' ? extrasBE : extrasRU;
+      const extras = [];
+      document.querySelectorAll('#extras input[type="checkbox"]:checked').forEach(cb => {
+        if (extrasDict[cb.value]) extras.push(extrasDict[cb.value]);
+      });
+      const otherExtra = document.getElementById('otherExtra').value.trim();
       if (otherExtra) extras.push(otherExtra);
 
       const hasGradingScale = document.querySelector('input[value="grading_scale"]').checked;
       const hasSlavicLook = document.querySelector('input[value="slavic_look"]').checked;
       const hasReflection = document.querySelector('input[value="reflection"]').checked;
+
+      // Стиль и изображения
+      let stylePrompt = '';
+      let imageStylePrompt = '';
+      if (style === 'child') {
+        stylePrompt = 'детский (яркий, с эмодзи, красочный)';
+        imageStylePrompt = 'Качественные изображения в стиле Pixar';
+      } else {
+        stylePrompt = 'академический (чистый, строгий, без эмодзи, сдержанные цвета)';
+        imageStylePrompt = 'Реалистичные фотографии или академические иллюстрации (НЕ в стиле Pixar!)';
+      }
 
       let taskDescriptionsText = '';
       if (taskTypesKeys.length > 0 || otherTask) {
@@ -681,10 +694,10 @@
 === ПАРАМЕТРЫ ===
 • Тема: ${lessonPlan}
 • Язык контента: ${contentLangName}
-• Количество заданий: СТРОГО ${taskCount} заданий
+• Количество заданий: СТРОГО ${totalTasks} заданий
 • Формат: A4 ${orientation === 'portrait' ? 'вертикальный' : 'горизонтальный'}
-• Стиль: ${style === 'child' ? 'детский (яркий, с эмодзи)' : 'академический'}
-${goals.length > 0 ? `• Цели: ${goals.join(', ')}` : ''}
+• Стиль: ${stylePrompt}
+${goalsDescriptions.length > 0 ? `• Цели:\n  ${goalsDescriptions.join('\n  ')}` : ''}
 ${extras.length > 0 ? `• Особенности: ${extras.join(', ')}` : ''}
 
 === 1. ЯЗЫК КОНТЕНТА ===
@@ -692,7 +705,13 @@ ${extras.length > 0 ? `• Особенности: ${extras.join(', ')}` : ''}
 – Формулировки точно соответствуют действию: «вставить» → «Вставь», «обвести» → "Обведи" и т.д..
 – Факты о Беларуси — ТОЛЬКО точные, проверенные, соответствуют правде. 
 
-=== 2. СТРУКТУРА HTML ===
+=== 2. ГОСУДАРСТВЕННЫЕ СИМВОЛЫ БЕЛАРУСИ — КРИТИЧЕСКИ ВАЖНО! ===
+🚩 ГОСУДАРСТВЕННЫЙ ФЛАГ И ГОСУДАРСТВЕННЫЙ ГЕРБ РЕСПУБЛИКИ БЕЛАРУСЬ генерировать в изображениях только правильные и официальные (если они нужны на изображении):
+✓ Правильный флаг: красно-зелёный с бело-красным орнаментом слева 🇧🇾
+✓ Правильный герб: зелёный контур Беларуси в золотых лучах солнца, красная звезда сверху, венок из колосьев 
+⚠️ ЕСЛИ ИСПОЛЬЗУЕШЬ ДРУГИЕ ИЗОБРАЖЕНИЯ ФЛАГА ИЛИ ГЕРБА — ЭТО ГРУБАЯ ОШИБКА!
+
+=== 3. СТРУКТУРА HTML ===
 – Создай <div class="a4-page"> с РОВНЫМИ размерами А4: width: ${fmt.w}; height: ${fmt.h}; max-height: ${fmt.h}; overflow: hidden;
 – ВСЁ содержимое должно поместиться ВНУТРИ этих размеров!
 – Если не помещается — УМЕНЬШАЙ шрифт, отступы, размеры изображений, но НЕ ВЫХОДИ за пределы ${fmt.h} по высоте и ширине!
@@ -700,7 +719,7 @@ ${extras.length > 0 ? `• Особенности: ${extras.join(', ')}` : ''}
 – Яркий цветной контур вокруг всего листа (5-10px, градиент).
 – Шапка: Тема (14pt, жирный) + строка «Класс ___ | Дата __________ | Фамилия, имя _______________» (10pt).
 
-=== 3. ЗАДАНИЯ ===
+=== 4. ЗАДАНИЯ ===
 – Каждое задание — в цветной рамке с эмодзи.
 – Padding внутри рамки: 6px, margin между рамками: 6px.
 – Размер шрифта заданий: СТРОГО 10pt.
@@ -709,7 +728,7 @@ ${extras.length > 0 ? `• Особенности: ${extras.join(', ')}` : ''}
 – Инструкции — жирным шрифтом.
 ${taskDescriptionsText}
 
-=== 4. ИЗОБРАЖЕНИЯ — КРИТИЧЕСКИ ВАЖНО ===
+=== 5. ИЗОБРАЖЕНИЯ — КРИТИЧЕСКИ ВАЖНО ===
 ❌ ЗАПРЕЩЕНО:
   • Геометрические фигуры (треугольники, круги, палочки)
   • Схематичные рисунки без детализации
@@ -717,7 +736,7 @@ ${taskDescriptionsText}
   
 ✅ ТРЕБУЕТСЯ:
   • Реалистичные фотографии или детализированные иллюстрации
-  • Качественные изображения в стиле Pixar
+  • ${imageStylePrompt}
   • Чёткие детали, естественные цвета
   
 – Размер изображений: высота СТРОГО 40mm, ширина — по ширине рамки задания.
@@ -727,13 +746,13 @@ ${taskDescriptionsText}
 ${hasSlavicLook ? '– Люди на изображениях: ТОЛЬКО славянской внешности (светлая кожа, светлые/русые волосы).' : ''}
 – 3-5 тематических изображений (base64 или URL).
 
-=== 5. ФОРМАТЫ ОТВЕТОВ ===
+=== 6. ФОРМАТЫ ОТВЕТОВ ===
 – Пунктирные линии для заполнения: длина 3-4 см, высота строки 18px.
 – Таблицы: <table> с border/padding, пустые ячейки (3-5 шт).
 – Поля для ответов: пунктирные строки высотой 20-25px.
 – Квадратики для галочек: 12×12px.
 
-=== 6. ПЕЧАТЬ — КРИТИЧЕСКИ ВАЖНО ===
+=== 7. ПЕЧАТЬ — КРИТИЧЕСКИ ВАЖНО ===
 – @page { size: ${fmt.w} ${fmt.h}; margin: 0; }
 – @media print {
     html, body { 
@@ -758,13 +777,13 @@ ${hasSlavicLook ? '– Люди на изображениях: ТОЛЬКО сл
 – СТРОГО ОДИН ЛИСТ А4 — весь контент должен поместиться на один лист!
 – Размеры .a4-page и @page — ИДЕНТИЧНЫ (${fmt.w} × ${fmt.h}).
 
-=== 7. ДОПОЛНИТЕЛЬНО ===
+=== 8. ДОПОЛНИТЕЛЬНО ===
 ${hasReflection ? `– Рефлексия в конце: «Что нового я узнал?» (2 строки) + «Нарисуй смайлик» (поле 2×2 см).` : ''}
 ${hasGradingScale ? `– Шкала оценивания: «Мои баллы: _____» + «Молодец! ⭐⭐⭐» | «Хорошо! ⭐⭐» | «Старайся! ⭐»` : ''}
-– Подпись автора внизу: «© Ирина Гаевская, учитель начальных классов, Республика Беларусь» (9pt).
+– Подпись автора внизу: «© Ирина Гаевская, учитель начальных классов, Республика Беларусь 🇧🇾» (9pt).
 – Заполни пустоту: если осталось место — добавь декор, советы, мини-вопросы.
 
-=== 8. ТЕХНИЧЕСКИЕ ТРЕБОВАНИЯ ===
+=== 9. ТЕХНИЧЕСКИЕ ТРЕБОВАНИЯ ===
 – Единый HTML-файл, только HTML+CSS, БЕЗ JavaScript.
 – НЕ ОБЪЯСНЯЙ — сразу выдай только код.
 
@@ -777,7 +796,10 @@ ${hasGradingScale ? `– Шкала оценивания: «Мои баллы: _
 6. ✓ Реалистичные изображения (НЕ геометрия!)
 7. ✓ Центрирование при печати (inline-block, НЕ absolute)
 8. ✓ Все задания помещаются без обрезки
-${hasSlavicLook ? '9. ✓ Люди — славянской внешности' : ''}
+9. ✓ Количество заданий — СТРОГО ${totalTasks}
+10. ✓ Флаг РБ — ТОЛЬКО правильный (красно-зелёный с орнаментом)
+11. ✓ Герб РБ — ТОЛЬКО правильный (зелёный контур с венком)
+${hasSlavicLook ? '12. ✓ Люди — славянской внешности' : ''}
 
 Если что-то не так — ИСПРАВЬ перед выдачей кода!`;
 
@@ -786,7 +808,7 @@ ${hasSlavicLook ? '9. ✓ Люди — славянской внешности' 
       document.getElementById('openQwenBtn').disabled = false;
       document.getElementById('downloadBtn').disabled = false;
       
-      showNotification('✅ Промпт сгенерирован!');
+      showNotification(`✅ Промпт сгенерирован! (заданий: ${totalTasks})`);
     }
 
     function copyPrompt() {
